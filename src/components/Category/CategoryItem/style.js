@@ -15,4 +15,5 @@ export const CategoryItem = styled.li`
   border-radius: 50%;
   background: #000000;
   color: #ffffff;
+  font-size: 32px;
 `
