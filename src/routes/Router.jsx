@@ -4,11 +4,13 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import MyPage from '../pages/MyPage';
 import SignUp from '../pages/SignUp';
+import Layout from "../components/Layout/BaseLayout/index.js";
+import AuthLayout from "../components/Layout/AuthLayout/index.js";
 
 const router = createBrowserRouter([
   {
     path: '/',
-
+    element: <Layout />,
     children: [
       {
         path: '',
@@ -22,18 +24,19 @@ const router = createBrowserRouter([
         path: 'details/:detailId',
         element: <Detail />
       },
+    ]
+  },
+  {
+    path: 'auth/',
+    element: <AuthLayout />,
+    children: [
       {
-        path: 'auth/',
-        children: [
-          {
-            path: 'signup',
-            element: <SignUp />
-          },
-          {
-            path: 'login',
-            element: <Login />
-          }
-        ]
+        path: 'signup',
+        element: <SignUp />
+      },
+      {
+        path: 'login',
+        element: <Login />
       }
     ]
   }
