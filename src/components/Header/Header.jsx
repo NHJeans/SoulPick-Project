@@ -1,5 +1,5 @@
 import {HeaderStyled} from './style';
-import Nav from "../Nav/index.js";
+import Nav from "./Nav/index.js";
 
 function Header() {
   return (
