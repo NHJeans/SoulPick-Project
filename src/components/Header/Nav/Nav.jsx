@@ -1,6 +1,6 @@
 import {NavStyled} from "./style.js";
 import {Link} from "react-router-dom";
-import Icon  from "../../Icon/icon.jsx";
+import Icon  from "../../Icon/Icon.jsx";
 import {ProfileButton, Title, TitleWrapper} from "../style.js";
 
 function Nav() {
