@@ -1,11 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Detail from '../pages/Detail';
 import Home from '../pages/Home';
-import Login from '../pages/Login';
 import MyPage from '../pages/MyPage';
 import SignUp from '../pages/SignUp';
 import Layout from "../components/Layout/BaseLayout/index.js";
 import AuthLayout from "../components/Layout/AuthLayout/index.js";
+import SignIn from '../pages/SignIn';
 
 const router = createBrowserRouter([
   {
@@ -35,9 +35,9 @@ const router = createBrowserRouter([
         element: <SignUp />
       },
       {
-        path: 'login',
-        element: <Login />
-      }
+        path: 'signin',
+        element: <SignIn />
+      },
     ]
   }
 ]);
