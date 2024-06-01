@@ -2,9 +2,12 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import App from "./App.jsx";
 import store from "./redux/config/configStore";
+import {ModalProvider} from "./components/Modal/ModalProvider/ModalProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <App />
+    <ModalProvider>
+      <App />
+    </ModalProvider>
   </Provider>
 );
