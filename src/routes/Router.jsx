@@ -3,12 +3,14 @@ import Detail from '../pages/Detail';
 import Home from '../pages/Home';
 import MyPage from '../pages/MyPage';
 import SignUp from '../pages/SignUp';
+import AuthLayout from "../components/Layout/AuthLayout/index.js";
 import SignIn from '../pages/SignIn';
+import BaseLayout from "../components/Layout/BaseLayout/index.js";
 
 const router = createBrowserRouter([
   {
     path: '/',
-
+    element: <BaseLayout />,
     children: [
       {
         path: '',
@@ -22,19 +24,20 @@ const router = createBrowserRouter([
         path: 'details/:detailId',
         element: <Detail />
       },
+    ]
+  },
+  {
+    path: 'auth/',
+    element: <AuthLayout />,
+    children: [
       {
-        path: 'auth/',
-        children: [
-          {
-            path: 'signup',
-            element: <SignUp />
-          },
-          {
-            path: 'signin',
-            element: <SignIn />
-          }
-        ]
-      }
+        path: 'signup',
+        element: <SignUp />
+      },
+      {
+        path: 'signin',
+        element: <SignIn />
+      },
     ]
   }
 ]);
