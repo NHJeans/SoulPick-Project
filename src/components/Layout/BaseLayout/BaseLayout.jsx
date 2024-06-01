@@ -2,7 +2,7 @@ import { LayoutStyled } from './style';
 import Header from "../../Header/index.js";
 import {Outlet} from "react-router-dom";
 
-function Layout() {
+function BaseLayout() {
   console.log('Layout rendered')
   return (
     <LayoutStyled>
@@ -12,4 +12,4 @@ function Layout() {
   );
 }
 
-export default Layout;
+export default BaseLayout;
