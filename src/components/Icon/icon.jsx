@@ -8,6 +8,7 @@ import {IconNaver} from "./components/Icons/IconNaver.jsx";
 import {IconKakao} from "./components/Icons/IconKakao.jsx";
 import {IconPlus} from "./components/Icons/IconPlus.jsx";
 function Icon({ name, size = 22, color, ...props }) {
+
   const parseIcon = (name) => {
     switch (name) {
       case 'logo': {
