@@ -6,5 +6,6 @@ export const AuthLayoutStyled = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #fadf
 `;
 

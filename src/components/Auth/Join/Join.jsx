@@ -1,7 +1,7 @@
-const SignUp = () => {
+const Join = () => {
   return (
     <div>
-      <h3>회원가입</h3>
+      <h3>SoulPick</h3>
       <form>
         <div>
           <label>닉네임:</label>
@@ -21,4 +21,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Join;
