@@ -1,15 +1,23 @@
 import {NavStyled} from "./style.js";
 import {Link} from "react-router-dom";
-import {IconLogo} from "../../Icon/icon.jsx";
+import Icon  from "../../Icon/Icon.jsx";
+import {ProfileButton, Title, TitleWrapper} from "../style.js";
 
 function Nav() {
   return (
     <NavStyled>
-      <Link to={'/'} className="logo">
-        <IconLogo/>
-      </Link>
-      <span>로그인/회원가입</span>
+      <TitleWrapper>
+        <Link to={'/'}>
+          <Icon name={'logo'} />
+          {/*<IconLogo/>*/}
+        </Link>
+        <Title>Soul Pick</Title>
+      </TitleWrapper>
+      <ProfileButton>
+       <Icon name={'profile'} />
+      </ProfileButton>
     </NavStyled>
   )
 }
 export default Nav;
+
