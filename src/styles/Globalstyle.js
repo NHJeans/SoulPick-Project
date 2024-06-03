@@ -4,9 +4,14 @@ import { reset } from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
-  * {
-    // TODO: 수정 필요!
-    font-family: "Noto Sans KR", sans-serif !important; 
+  body {
+    font-family: "Noto Sans KR", sans-serif ; 
   }
+  .pacifico-regular {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
 `;
 export default GlobalStyle
