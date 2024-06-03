@@ -7,6 +7,7 @@ import {IconGoogle} from "./components/Icons/IconGoogle.jsx";
 import {IconNaver} from "./components/Icons/IconNaver.jsx";
 import {IconKakao} from "./components/Icons/IconKakao.jsx";
 import {IconPlus} from "./components/Icons/IconPlus.jsx";
+import {IconGithub} from "./components/Icons/IconGithub.jsx";
 function Icon({ name, size = 22, color, ...props }) {
 
   const parseIcon = (name) => {
@@ -34,6 +35,9 @@ function Icon({ name, size = 22, color, ...props }) {
       }
       case 'plus' : {
         return <IconPlus />
+      }
+      case 'github' : {
+        return <IconGithub />
       }
       default: {
         return null;
