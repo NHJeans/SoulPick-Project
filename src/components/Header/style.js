@@ -9,6 +9,7 @@ export const HeaderStyled = styled.header`
   padding: 0 30px;
   background-color: #CCECEA;
   box-shadow: 0 4px 4px 0 rgb(0 0 0 / 5%);
+  z-index: 10;
 `;
 
 export const TitleWrapper = styled.div`
