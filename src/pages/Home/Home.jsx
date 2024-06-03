@@ -1,8 +1,8 @@
-import {HomeContainer} from "./style";
-import { Category } from "../../components/Category/index.js";
-import LayoutContainer from "../../components/Layout/LayoutContainer/index.js";
-import ModalButton from "../../components/ModalButton/index.js";
-import Contents from "../../components/Contents/index.js";
+import { HomeContainer } from './style';
+import { Category } from '../../components/Category/index.js';
+import LayoutContainer from '../../components/Layout/LayoutContainer/index.js';
+import ModalButton from '../../components/ModalButton/index.js';
+import Contents from '../../components/Contents/index.js';
 
 function Home() {
   // const { openModal } = useModal();
@@ -13,14 +13,13 @@ function Home() {
 
   return (
     <HomeContainer>
-      <Category/>
+      <Category />
       <LayoutContainer>
         <Contents />
-        <ModalButton/>
+        <ModalButton />
       </LayoutContainer>
     </HomeContainer>
   );
 }
 
 export default Home;
-
