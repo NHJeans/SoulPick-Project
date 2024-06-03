@@ -16,7 +16,7 @@ export const CategoryContainer = styled.div`
 export const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 1000px;
+  width: 800px;
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
@@ -38,6 +38,7 @@ export const TitleContainer = styled.div`
   }
   .title {
     font-size: 22px;
+    font-weight: 600;
     padding: 5px 0;
   }
   .content-info-div {
@@ -89,6 +90,7 @@ export const ContentContainer = styled.div`
     margin-bottom: 30px;
   }
   p {
-    line-height: 23px;
+    font-size: 16px;
+    line-height: 140%;
   }
 `;

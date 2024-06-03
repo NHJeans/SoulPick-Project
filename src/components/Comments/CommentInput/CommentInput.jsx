@@ -7,7 +7,7 @@ function CommentInput() {
       <div>
         <Icon name={'profile'} />
       </div>
-      <input placeholder="댓글을 입력하세요" />
+      <textarea placeholder="댓글을 입력하세요" />
       <button>등록</button>
     </CommentInputContainer>
   );

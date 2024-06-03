@@ -1,10 +1,12 @@
 import CommentItem from '../CommentItem';
+import { CommentListContainer, CommentTitle } from './style';
 
 function CommentList() {
   return (
-    <div>
+    <CommentListContainer>
+      <CommentTitle>댓글</CommentTitle>
       <CommentItem />
-    </div>
+    </CommentListContainer>
   );
 }
 

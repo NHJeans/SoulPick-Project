@@ -7,5 +7,10 @@ export const DetailContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: fit-content;
+  height: 100%;
+  overflow: hidden;
+`;
+
+export const Center = styled.div`
+  width: 800px;
 `;
