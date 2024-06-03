@@ -1,24 +1,23 @@
+import Join from '../../components/Auth/Join/Join';
+import LoginLink from '../../components/Auth/LoginLink';
+import { styled } from 'styled-components';
+
 const SignUp = () => {
   return (
-    <div>
-      <h3>회원가입</h3>
-      <form>
-        <div>
-          <label>닉네임:</label>
-          <input type="text" required />
-        </div>
-        <div>
-          <label>이메일:</label>
-          <input type="email" required />
-        </div>
-        <div>
-          <label>비밀번호:</label>
-          <input type="password" required />
-        </div>
-        <button type="submit">회원가입</button>
-      </form>
-    </div>
+    <SignUpContainer>
+      <Join />
+      <LoginLink />
+    </SignUpContainer>
   );
 };
 
 export default SignUp;
+
+const SignUpContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 680px;
+  height: 835px;
+`;
