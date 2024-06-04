@@ -1,7 +1,7 @@
 import {NavStyled} from "./style.js";
 import {Link} from "react-router-dom";
 import Icon  from "../../Icon/Icon.jsx";
-import {ProfileButton, Title, TitleWrapper} from "../style.js";
+import {MyPageButton, Title, TitleWrapper} from "../style.js";
 
 function Nav() {
   return (
@@ -13,9 +13,9 @@ function Nav() {
         </Link>
         <Title>Soul Pick</Title>
       </TitleWrapper>
-      <ProfileButton>
+      <MyPageButton>
        <Icon name={'profile'} />
-      </ProfileButton>
+      </MyPageButton>
     </NavStyled>
   )
 }

@@ -9,6 +9,7 @@ export const HeaderStyled = styled.header`
   padding: 0 30px;
   background-color: #CCECEA;
   box-shadow: 0 4px 4px 0 rgb(0 0 0 / 5%);
+  z-index: 10;
 `;
 
 export const TitleWrapper = styled.div`
@@ -25,7 +26,7 @@ export const Title = styled.h1`
   color: #ffffff;
 `;
 
-export const ProfileButton = styled.button`
+export const MyPageButton = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;

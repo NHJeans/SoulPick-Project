@@ -1,11 +1,11 @@
-import {ContentsContainer} from "./style.js";
-import ContentsList from "./components/ContentsList/index.js";
+import {ContentsContainer, ContentTitle} from "./style.js";
+import ContentList from "./components/ContentList/index.js";
 
-function Contents() {
+function Contents({title}) {
   return (
     <ContentsContainer>
-      <div style={{marginBottom: '40px', fontSize: "32px"}}>K-Pop</div>
-     <ContentsList />
+      <ContentTitle>{title}</ContentTitle>
+     <ContentList />
     </ContentsContainer>
   );
 }
