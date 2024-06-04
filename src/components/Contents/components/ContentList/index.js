@@ -1,1 +1,1 @@
-export { default } from './ContentsList.jsx';
+export { default } from './ContentList.jsx';

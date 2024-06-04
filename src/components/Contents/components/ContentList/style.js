@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContentsListContainer = styled.ul`
+export const ContentListContainer = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

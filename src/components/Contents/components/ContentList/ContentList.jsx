@@ -1,5 +1,5 @@
 import {
-  ContentsListContainer,
+  ContentListContainer,
 } from "./style.js";
 import ContentItem from "../ContentItem/index.js";
 
@@ -12,13 +12,13 @@ const CONTENTS = [
   {name : 'test2', contents: 'test'},
   {name : 'test3', contents: 'test'},
 ];
-function ContentsList() {
+function ContentList() {
   return (
-    <ContentsListContainer>
+    <ContentListContainer>
       {CONTENTS.map((content) => (
         <ContentItem key={content.name} content={content}/>
       ))}
-    </ContentsListContainer>
+    </ContentListContainer>
   )
 }
-export default ContentsList
+export default ContentList
