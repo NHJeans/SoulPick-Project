@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const CategoryItemContainer = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 1280px;
+  gap: 20px;
+  width: 1200px;
 `
 export const CategoryItem = styled.li`
   display: flex;
