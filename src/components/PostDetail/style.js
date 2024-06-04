@@ -10,6 +10,7 @@ export const CategoryContainer = styled.div`
     font-size: 32px;
     font-weight: bold;
     padding: 20px 0;
+    color: #5cada8;
   }
 `;
 
@@ -21,8 +22,8 @@ export const PostContainer = styled.div`
   align-items: center;
   padding: 10px 20px;
   box-sizing: border-box;
-  border-top: 3px solid;
-  border-bottom: 1px solid;
+  border-top: 3px solid #5cada8;
+  border-bottom: 1px solid #5cada8;
 `;
 
 export const TitleContainer = styled.div`
@@ -58,20 +59,6 @@ export const TitleContainer = styled.div`
     p {
       margin: 0 10px;
       font-size: 14px;
-    }
-  }
-  .comment-div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    svg {
-      width: 25px;
-      margin-right: 5px;
-    }
-    p {
-      height: fit-content;
-      font-size: 20px;
     }
   }
 `;

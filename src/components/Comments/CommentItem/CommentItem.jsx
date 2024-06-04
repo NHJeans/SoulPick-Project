@@ -1,16 +1,35 @@
+import { useEffect, useState } from 'react';
+import supabase from '../../../apis/supabaseClient';
 import Icon from '../../Icon/Icon';
 import { CommentItemContainer } from './style';
 
-function CommentItem() {
+function CommentItem({ comment }) {
+  const [nickname, setNickname] = useState('');
+
+  async function fetchUser() {
+    const { data, error } = await supabase.from('Users').select('*').eq('id', comment.user_id).single();
+    if (error) throw error;
+    const nickname = data.nickname;
+    setNickname(nickname);
+  }
+
+  useEffect(() => {
+    if (!comment || !comment.user_id) {
+      null;
+    } else {
+      fetchUser();
+    }
+  }, []);
+
   return (
     <CommentItemContainer>
       <div className="comment-title">
         <div>
           <Icon name={'profile'} />
         </div>
-        <p>유저 4982</p>
+        <p>{nickname}</p>
       </div>
-      <p className="comment-context">정말 좋은 노래 같습니다. 심금을 울리네요. 에스파는 항상 이런 노래를..</p>
+      <p className="comment-context">{comment.content}</p>
     </CommentItemContainer>
   );
 }

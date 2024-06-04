@@ -22,11 +22,18 @@ export const CommentInputContainer = styled.div`
       margin: 15px;
     }
   }
+  form {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+  }
   textarea {
     width: 100%;
     border: transparent;
     border-radius: 15px;
     margin-left: 20px;
+    font-family: inherit;
     font-size: 16px;
     height: 110px;
     padding: 20px;
@@ -38,6 +45,7 @@ export const CommentInputContainer = styled.div`
   }
   button {
     background-color: #ccecea;
+    font-family: inherit;
     padding: 20px;
     border: transparent;
     border-radius: 15px;
