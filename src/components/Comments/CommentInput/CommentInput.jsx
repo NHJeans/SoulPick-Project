@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import supabase from '../../../apis/supabaseClient';
+import { insertComment } from '../../../apis/comment';
 import { createComment } from '../../../redux/slices/commentSlice';
 import Icon from '../../Icon/Icon';
 import { CommentInputContainer } from './style';
@@ -19,19 +19,11 @@ function CommentInput({ postId, userId }) {
       postId,
       content
     };
+    //redux에 값 저장
     dispatch(createComment(newComment));
-    insertComment(newComment);
+    //supabase insert 함수
+    insertComment(newComment, postId, userId);
   };
-
-  //supabase insert
-  async function insertComment(comment) {
-    const { error } = await supabase.from('Comments').insert({
-      content: comment.content,
-      post_id: postId,
-      user_id: userId
-    });
-    if (error) throw error;
-  }
 
   return (
     <CommentInputContainer>

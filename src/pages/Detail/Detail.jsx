@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import supabase from '../../apis/supabaseClient';
+import { getCurrentUser } from '../../apis/comment';
 import CommentInput from '../../components/Comments/CommentInput/CommentInput';
 import CommentList from '../../components/Comments/CommentList/CommentList';
 import PostDetail from '../../components/PostDetail/PostDetail';
@@ -11,15 +11,11 @@ function Detail() {
   const postId = useParams().detailId;
   const [userId, setUserId] = useState('');
 
-  //supabase getUser하기
-  async function getCurrentUser() {
-    const { data, error } = await supabase.auth.getUser();
-    if (error) throw error;
-    setUserId(data.user.id);
-  }
-
   useEffect(() => {
-    getCurrentUser();
+    (async () => {
+      const getId = await getCurrentUser();
+      setUserId(getId);
+    })();
   }, []);
 
   return (
