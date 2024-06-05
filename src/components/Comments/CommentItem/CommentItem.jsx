@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchUser } from '../../../apis/comment';
+import { deleteSupabaseComment, fetchUser } from '../../../apis/comment';
 import Icon from '../../Icon/Icon';
 import { ButtonDiv, CommentItemContainer } from './style';
 
@@ -18,6 +18,15 @@ function CommentItem({ comment, isMyComment }) {
     }
   }, []);
 
+  const handleUpdateBtn = () => {
+    console.log('댓글 수정');
+  };
+
+  const handleDeleteBtn = () => {
+    //supabase comment삭제
+    deleteSupabaseComment(comment.id);
+  };
+
   return (
     <CommentItemContainer>
       <div className="comment-title">
@@ -30,8 +39,8 @@ function CommentItem({ comment, isMyComment }) {
 
         {isMyComment && (
           <ButtonDiv>
-            <p>수정</p>
-            <p>삭제</p>
+            <p onClick={handleUpdateBtn}>수정</p>
+            <p onClick={handleDeleteBtn}>삭제</p>
           </ButtonDiv>
         )}
       </div>

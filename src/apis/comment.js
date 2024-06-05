@@ -27,7 +27,11 @@ export const fetchUser = async (comment) => {
   if (error) throw error;
   const nickname = data.nickname;
   return nickname;
-  //setNickname(nickname);
+};
+//supabase comment 삭제하기
+export const deleteSupabaseComment = async (commentId) => {
+  const { error } = await supabase.from('Comments').delete().eq('id', commentId);
+  if (error) throw error;
 };
 
 /**CommentList.jsx */

@@ -3,15 +3,18 @@ import { createSlice } from '@reduxjs/toolkit';
 const commentSlice = createSlice({
   name: 'comment',
   initialState: {
-    commentState: {}
+    commentState: []
   },
   reducers: {
     createComment: (state, action) => {
-      state.commentState = action.payload;
+      state.commentState.push(action.payload);
+    },
+    deleteComment: (state, action) => {
+      return state;
     }
   }
 });
 
-export const { createComment } = commentSlice.actions;
+export const { createComment, deleteComment } = commentSlice.actions;
 
 export default commentSlice.reducer;
