@@ -31,13 +31,15 @@ export const styles = {
   },
 
   userNickName: {
+    margin: '3px 0 0',
     fontSize: '18px',
     color: 'lightseagreen',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    width: '150px'
   },
   email: {
     margin: '10px 0 0',
-    fontSize: '18px'
+    fontSize: '24px'
   },
   emailInput: {
     margin: '2px 0 0',
@@ -48,7 +50,7 @@ export const styles = {
   editButton: {
     padding: '8px 13px',
     fontSize: '13px',
-    backgroundColor: 'lightseagreen',
+    backgroundColor: '#A0D2CF',
     color: '#fff',
     border: 'none',
     borderRadius: '7px',
@@ -57,14 +59,25 @@ export const styles = {
   },
 
   //  내가 쓴 글-------------------
-
+  borderOne: {
+    borderTop: '2px solid black',
+    margin: '0 0 20px'
+  },
+  borderTwo: {
+    borderTop: '2px solid black',
+    margin: '30px 0 0',
+    width: '800px',
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  },
   centerStyle: {
     display: 'flex',
     textalign: 'center',
     margin: '0 auto',
     width: 'fit-content',
     marginTop: '-80px',
-    width: '400px'
+    width: '800px'
   },
   textTop: {
     fontSize: '30px',
