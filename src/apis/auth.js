@@ -1,6 +1,6 @@
 import supabase from './supabaseClient';
 import { generateRandomNickname } from '../utils/generateRandomNickname'
-import { redirect } from 'react-router-dom';
+
 
 
 export class AuthError extends Error {
@@ -25,7 +25,7 @@ export const login = async ({ email, password }) => {
   return data;
 };
 
-// 사용자 정보 확인 함수
+// 사용자 정보 확인
 export const checkUserExists = async (userId) => {
   const { data, error } = await supabase
     .from('Users')
@@ -34,24 +34,27 @@ export const checkUserExists = async (userId) => {
     .single();
 
   if (error && error.code !== 'PGRST116') {
-    throw new AuthError('사용자 정보를 확인하는 데 실패했습니다: ' + error.message);
+    throw new AuthError('사용자 정보를 확인하는 데 실패했습니다');
   }
 
   return data;
 };
 
 // 사용자 정보 저장
-export const insertUser = async (userId) => {
-  const nickname = await generateRandomNickname();
+export const insertUser = async (userId, nickname, email, provider, profileImg) => {
   const { error } = await supabase.from('Users').insert({
     id: userId,
-    nickname,
-    profile_img: '',
+    nickname: nickname || generateRandomNickname(),
+    email,
+    provider,
+    profile_img: profileImg || '',
   });
+
   if (error) {
     throw new AuthError('사용자 정보를 저장하는 데 실패했습니다.');
   }
 };
+
 // 회원가입 기능
 export const signUp = async ({ email, password }) => {
   const { data, error } = await supabase.auth.signUp({ email, password });
@@ -62,7 +65,7 @@ export const signUp = async ({ email, password }) => {
   const existingUser = await checkUserExists(userId);
 
   if (!existingUser) {
-    await insertUser(userId);
+    await insertUser(userId, generateRandomNickname(), email, 'email', '');
   }
 
   return data;
@@ -70,42 +73,80 @@ export const signUp = async ({ email, password }) => {
 
 // OAuth 로그인 및 회원가입
 const oauthLogin = async (provider, options) => {
-  try {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider,
-      options,
-    });
-    if (error) {
-      console.error(`Error during ${provider} login:`, error);
-      throw new AuthError("로그인 정보가 잘못되었습니다.");
-    }
-    if (data.url) {
-      redirect(data.url);
-    } else {
-      console.log(data);
-    }
-  } catch (error) {
-    console.error(`Unexpected error during ${provider} login:`, error);
-    throw new AuthError("예상치 못한 오류가 발생했습니다.");
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider,
+    options,
+  });
+
+  if (error) {
+    throw new Error(`${provider} 로그인 중 오류가 발생했습니다`);
   }
+  if (data.url) {
+    window.location.href = data.url;
+  }
+
+  return data;
 };
 
 // 구글 로그인 및 회원가입
 export const googleLogin = async () => {
-  await oauthLogin("google", { queryParams: { access_type: "offline", prompt: "consent" } });
+  await oauthLogin("google", { redirectTo: import.meta.env.VITE_OAUTH_REDIRECT_URL });
 };
 
 // 깃헙 로그인 및 회원가입
 export const githubLogin = async () => {
-  await oauthLogin("github", { redirectTo: 'http://localhost:5173' });
+  await oauthLogin("github", { redirectTo: import.meta.env.VITE_OAUTH_REDIRECT_URL });
 };
 
 // 카카오 로그인 및 회원가입
 export const kakaoLogin = async () => {
-  await oauthLogin("kakao", { redirectTo: 'http://localhost:5173' });
+  await oauthLogin("kakao", { redirectTo: import.meta.env.VITE_OAUTH_REDIRECT_URL });
 };
 
+// 사용자 정보 추출
+const extractUserInfo = (user) => {
+  const provider = user.app_metadata.provider;
+  let nickname = generateRandomNickname();
+  const profileImg = user.user_metadata.avatar_url || '';
 
+  switch (provider) {
+    case 'google':
+      nickname = user.user_metadata.full_name || nickname;
+      break;
+    case 'github':
+      nickname = user.user_metadata.user_name || nickname;
+      break;
+    case 'kakao':
+      nickname = user.user_metadata.full_name || nickname;
+      break;
+    default:
+      break;
+  }
+
+  return { nickname, profileImg, provider };
+};
+
+// 리다이렉션 후 사용자 정보 업데이트
+export const updateUserAfterOAuth = async () => {
+  const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+  if (sessionError) {
+    throw new Error('세션 정보를 가져오는 데 실패했습니다.');
+  }
+
+  const user = sessionData.session.user;
+
+  if (!user) {
+    throw new Error("사용자 정보가 없습니다.");
+  }
+
+  const userId = user.id;
+  const existingUser = await checkUserExists(userId);
+
+  if (!existingUser) {
+    const { nickname, profileImg, provider } = extractUserInfo(user);
+    await insertUser(userId, nickname, user.email, provider, profileImg);
+  }
+};
 
 //Todo 미구현
 // 로그아웃 기능

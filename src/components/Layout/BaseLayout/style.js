@@ -6,5 +6,5 @@ export const LayoutStyled = styled.div`
   min-height: 100vh;
   overflow-y: auto;
   display: flex;
-  background-color: #fffff;
+  background-color: #ffffff;
 `;

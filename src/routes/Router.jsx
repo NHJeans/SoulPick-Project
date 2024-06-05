@@ -6,6 +6,7 @@ import AuthLayout from '../components/Layout/AuthLayout/index.js';
 import BaseLayout from '../components/Layout/BaseLayout/index.js';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
+import OAuthRedirectPage from '../pages/OAuthRedirectPage';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         element: <SignIn />
       }
     ]
+  },
+  {
+    path: 'oauth-redirect',
+    element: <OAuthRedirectPage />
   }
 ]);
 
