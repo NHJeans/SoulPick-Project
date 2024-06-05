@@ -8,13 +8,6 @@ function CategoryItemList({onSelectCategory}){
   }
 
   // 카테고리 별로 선택
-  // const categories = data.reduce((acc, item) => {
-  //   if (!acc[item.category]) {
-  //     acc[item.category] = [];
-  //   }
-  //   acc[item.category].push(item);
-  //   return acc;
-  // }, {});
   const categories = [...new Set(data.map(item => item.category))];
 
   return (
