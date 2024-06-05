@@ -23,7 +23,7 @@ function CategoryItemList({onSelectCategory}){
 
   const categoryThumbnails = categories.map(category => {
     if (category.name === '전체') {
-      return category.defaultImage; // 'All' 카테고리는 썸네일 없음
+      return category.defaultImage;
     }
     const item = data.find(d => d.category === category.name);
     return item ? getYoutubeThumbnail(item.link) : category.defaultImage;
