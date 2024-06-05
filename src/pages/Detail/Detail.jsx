@@ -12,6 +12,7 @@ function Detail() {
   const [userId, setUserId] = useState('');
 
   useEffect(() => {
+    //현재 로그인한 유저 정보 불러오기
     (async () => {
       const getId = await getCurrentUser();
       setUserId(getId);

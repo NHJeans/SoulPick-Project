@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import supabase from '../../../apis/supabaseClient';
+import { fetchComments } from '../../../apis/comment';
 import CommentItem from '../CommentItem';
 import { CommentLength, CommentListContainer, CommentTitle } from './style';
 
@@ -10,15 +10,11 @@ function CommentList({ postId }) {
 
   const [comments, setComments] = useState([]);
 
-  //supabase에서 list 읽어옴
-  async function fetchComments() {
-    const { data, error } = await supabase.from('Comments').select('*,Users(nickname)').eq('post_id', postId);
-    if (error) throw error;
-    setComments(data);
-  }
-
   useEffect(() => {
-    fetchComments();
+    (async () => {
+      const supabaseComments = await fetchComments(postId);
+      setComments(supabaseComments);
+    })();
   }, []);
 
   useEffect(() => {
