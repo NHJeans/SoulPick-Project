@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { deleteSupabaseComment, fetchUser } from '../../../apis/comment';
+import { deleteComment } from '../../../redux/slices/commentSlice';
 import Icon from '../../Icon/Icon';
-import { ButtonDiv, CommentItemContainer } from './style';
+import { ButtonDiv, CommentContent, CommentItemContainer, EditingBox } from './style';
 
 function CommentItem({ comment, isMyComment }) {
   const [nickname, setNickname] = useState('');
-  // const [isMyComment, setIsMyComment] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!comment || !comment.user_id) {
@@ -18,13 +22,21 @@ function CommentItem({ comment, isMyComment }) {
     }
   }, []);
 
+  //수정 버튼 누를 시
   const handleUpdateBtn = () => {
-    console.log('댓글 수정');
+    setIsEdit(true);
   };
 
+  const handleCompleteEdit = () => {
+    setIsEdit(false);
+  };
+
+  //삭제 버튼 누를 시
   const handleDeleteBtn = () => {
     //supabase comment삭제
     deleteSupabaseComment(comment.id);
+    //redux comment list에서 해당 값 삭제
+    dispatch(deleteComment(comment.id));
   };
 
   return (
@@ -44,7 +56,14 @@ function CommentItem({ comment, isMyComment }) {
           </ButtonDiv>
         )}
       </div>
-      <p className="comment-context">{comment.content}</p>
+      {isEdit ? (
+        <EditingBox>
+          <textarea defaultValue={comment.content} />
+          <button onClick={handleCompleteEdit}>수정완료</button>
+        </EditingBox>
+      ) : (
+        <CommentContent>{comment.content}</CommentContent>
+      )}
     </CommentItemContainer>
   );
 }

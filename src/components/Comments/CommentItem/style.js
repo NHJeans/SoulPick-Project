@@ -33,12 +33,6 @@ export const CommentItemContainer = styled.div`
       }
     }
   }
-  .comment-context {
-    font-size: 15px;
-    padding: 0 10px;
-    margin-bottom: 10px;
-    line-height: 140%;
-  }
 `;
 
 export const ButtonDiv = styled.div`
@@ -51,5 +45,42 @@ export const ButtonDiv = styled.div`
     &:hover {
       color: #5cada8;
     }
+  }
+`;
+
+export const CommentContent = styled.p`
+  font-size: 15px;
+  padding: 0 10px;
+  margin-bottom: 10px;
+  line-height: 140%;
+`;
+
+export const EditingBox = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: none;
+    padding: 15px 20px;
+    font-size: 15px;
+    font-family: inherit;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: #efefef;
+    border: transparent;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    min-width: 100px;
+    border: transparent;
+    border-radius: 15px;
+    margin-left: 25px;
+    box-sizing: border-box;
+    font-size: 18px;
+    cursor: pointer;
   }
 `;
