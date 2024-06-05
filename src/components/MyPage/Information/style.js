@@ -47,12 +47,12 @@ export const styles = {
   },
   editButton: {
     padding: '8px 13px',
-    fontSize: '14px',
+    fontSize: '13px',
     backgroundColor: 'lightseagreen',
     color: '#fff',
     border: 'none',
     borderRadius: '7px',
-    marginTop: '-80px',
+    marginTop: '-70px',
     marginLeft: '40px'
   },
 

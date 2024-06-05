@@ -1,19 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styles } from './style';
 
 function Impormation() {
+  const [isEditing, setIsEditing] = useState(false);
+  const [nickname, setNickname] = useState('유저 5882');
+  const [email, setEmail] = useState('example@gmail.com');
+
+  const handleEditClick = () => {
+    setIsEditing((prev) => !prev);
+  };
+
+  const handleNicknameChange = (e) => {
+    setNickname(e.target.value);
+  };
+
+  const renderNickname = () => {
+    if (isEditing) {
+      return <input type="text" value={nickname} onChange={handleNicknameChange} style={styles.userNickName} />;
+    } else {
+      return <h5 style={styles.userNickName}>{nickname}</h5>;
+    }
+  };
+
   return (
     <>
       <div style={styles.container}>
         <div style={styles.profilePicture}>유저</div>
         <div style={styles.infoContainer}>
           <h2 style={styles.name}>닉네임</h2>
-          <h5 style={styles.userNickName}>유저 5882</h5>
+          {renderNickname()}
           <p style={styles.email}>이메일</p>
           <p style={styles.emailInput}>example@gmail.com</p>
         </div>
-        <button style={styles.editButton}>수정</button>
+        <button style={styles.editButton} onClick={handleEditClick}>
+          {isEditing ? '완료' : '수정'}
+        </button>
       </div>
+
       <div style={styles.centerStyle}>
         <div>
           <p style={styles.textTop}>내가 쓴 글</p>
