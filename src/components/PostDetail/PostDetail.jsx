@@ -6,6 +6,8 @@ import { CategoryContainer, ContentContainer, PostContainer, TitleContainer, Wra
 function PostDetail({ postId, userId }) {
   const [post, setPost] = useState({});
   const [nickname, setNickname] = useState('');
+  const [isEdit, setIsEdit] = useState(false);
+  const [updateContent, setUpdateContent] = useState(post.content);
 
   useEffect(() => {
     //supabase에서 post불러오기
@@ -15,6 +17,19 @@ function PostDetail({ postId, userId }) {
       setNickname(supaPost.Users.nickname);
     })();
   }, []);
+
+  const handleDeletePostBtn = () => {};
+
+  //수정 버튼 누르면 수정할 수 있는 input이 뜸
+  const handleInsertPostBtn = () => {
+    setIsEdit(true);
+  };
+
+  //수정 등록 누르면 등록이 되게..
+  const handleUpdatePostBtn = () => {
+    setIsEdit(false);
+    setPost({ ...post, content: updateContent });
+  };
 
   return (
     <Wrapper>
@@ -35,8 +50,8 @@ function PostDetail({ postId, userId }) {
           </div>
           {post.user_id === userId ? (
             <div className="right-div">
-              <p>수정</p>
-              <p>삭제</p>
+              <p onClick={handleInsertPostBtn}>수정</p>
+              <p onClick={handleDeletePostBtn}>삭제</p>
             </div>
           ) : (
             false
@@ -44,7 +59,14 @@ function PostDetail({ postId, userId }) {
         </TitleContainer>
         <ContentContainer>
           <div></div>
-          <p>{post.content}</p>
+          {isEdit ? (
+            <div>
+              <textarea defaultValue={post.content} onChange={(e) => setUpdateContent(e.target.value)} />
+              <button onClick={handleUpdatePostBtn}>등록</button>
+            </div>
+          ) : (
+            <p>{post.content}</p>
+          )}
         </ContentContainer>
       </PostContainer>
     </Wrapper>
