@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import commentSlice from '../slices/commentSlice';
 
-const emptyReducer = (state = {}, action) => {
-  return state;
-};
 // store 설정
 const store = configureStore({
-  reducer: emptyReducer
+  reducer: {
+    comment: commentSlice
+  }
 });
 export default store;
