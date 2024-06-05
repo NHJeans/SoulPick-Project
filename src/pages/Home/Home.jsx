@@ -10,7 +10,7 @@ import useModalScrollRock from "../../hooks/ModalScrollRock/index.js";
 function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {lockScroll,openScroll} = useModalScrollRock();
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("전체");
 
   const openModal = () => {
     lockScroll();
