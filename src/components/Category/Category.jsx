@@ -1,10 +1,11 @@
 import { CategoryContainer } from './style.js';
-import CategoryItemList from './CategoryItem/index.js';
+import CategoryItemList from './CategoryItemList/index.js';
 
-function Category() {
+function Category({onSelectCategory}) {
+
   return (
     <CategoryContainer>
-      <CategoryItemList />
+      <CategoryItemList onSelectCategory={onSelectCategory} />
     </CategoryContainer>
   );
 }
