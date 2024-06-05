@@ -1,4 +1,4 @@
-import Information from '../../components/MyPage/Information';
+import Information from '../../components/Information';
 
 function MyPage() {
   return (
