@@ -9,18 +9,19 @@ function Contents({title}) {
     return <div>Error loading posts.</div>;
   }
 
-  const filteredData = title ? data.filter(item => item.category === title) : data;
+  const filteredData = title === "전체" ? data : data.filter(item => item.category === title)
 
   return (
     <ContentsContainer>
-      <ContentTitle>{title || "추천합니다"}</ContentTitle>
-      {/*<ContentList data={filteredData} />*/}
+      <ContentTitle>{title}</ContentTitle>
       {filteredData.length > 0 ? (
         <ContentList data={filteredData} />
       ) : (
-        <DefaultContents>
-          <p>해당 카테고리에 게시글이 없습니다.</p>
-        </DefaultContents>
+        title !== "전체" && (
+          <DefaultContents>
+            <p>해당 카테고리에 게시글이 없습니다.</p>
+          </DefaultContents>
+        )
       )}
     </ContentsContainer>
 
