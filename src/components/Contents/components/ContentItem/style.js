@@ -45,3 +45,12 @@ export const ContentImgWrapper = styled.div`
     object-fit: cover;
   }
 `
+
+export const CommentCount = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-size: 30px;
+  color: #A0D2CF;
+  font-weight: 700;
+`
