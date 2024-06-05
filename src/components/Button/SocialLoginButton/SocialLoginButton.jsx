@@ -7,7 +7,7 @@ const SocialLoginButton = ({ provider, onClick }) => {
       case 'google':
         return 'Google';
       case 'github':
-        return 'github';
+        return 'Github';
       case 'kakao':
         return 'kakao';
       default:
