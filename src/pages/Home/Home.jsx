@@ -5,14 +5,14 @@ import ModalButton from '../../components/Button/ModalButton/index.js';
 import Contents from '../../components/Contents/index.js';
 import {useState} from "react";
 import ModalLayout from "../../components/Modal/Modal.jsx";
-import useModalScrollRock from "../../components/CustomHook/ModalScrollRock/index.jsx";
+import useModalScrollRock from "../../hooks/ModalScrollRock/index.js";
 
 function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {lockScroll,openScroll} = useModalScrollRock();
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const openModal = () => {
-    // eslint-disable-next-line react/jsx-key
     lockScroll();
     setIsModalOpen(true);
   };
@@ -24,9 +24,9 @@ function Home() {
   return (
     <HomeContainer>
       <HomeTitle>카테고리</HomeTitle>
-      <Category />
+      <Category onSelectCategory={setSelectedCategory} />
       <LayoutContainer>
-        <Contents title={'K-Pop'} />
+        <Contents title={selectedCategory} />
         <ModalButton onClick={openModal} />
       </LayoutContainer>
       {isModalOpen && <ModalLayout closeModal={closeModal} />}
