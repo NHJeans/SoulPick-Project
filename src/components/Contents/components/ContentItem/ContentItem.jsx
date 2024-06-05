@@ -1,17 +1,17 @@
-import {
-
-} from "../ContentList/style.js";
 import {Container, ContentDescription, ContentImgWrapper, ContentText, ContentTextWrapper} from "./style.js";
 
-function ContentItem({content}){
+function ContentItem({item}){
+  // const thumbnail = getYoutubeThumbnail(item.link);
+
   return (
     <Container>
       <ContentTextWrapper>
-        <ContentText>{content.name}</ContentText>
-        <ContentDescription>{content.contents}</ContentDescription>
+        <ContentText>{item.title}</ContentText>
+        <ContentDescription>{item.content}</ContentDescription>
       </ContentTextWrapper>
       <ContentImgWrapper>
-        <img src="" alt='썸네일'/>
+        <video controls loop muted autoPlay src={item.link}/>
+        {/*<img src={thumbnail} alt={`${item.title} thumbnail`} />*/}
       </ContentImgWrapper>
     </Container>
   )

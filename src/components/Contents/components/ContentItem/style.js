@@ -8,6 +8,7 @@ export const Container = styled.li`
   gap: 16px;
   height: 120px;
   border-bottom: 2px solid #333;
+  cursor: pointer
 `
 
 export const ContentTextWrapper = styled.div`
@@ -37,7 +38,7 @@ export const ContentImgWrapper = styled.div`
   overflow: hidden;
   border-radius: 16px;  
   background-color: #000;
-  img {
+  video {
     width: 100%;
     height: 100%;
     object-fit: cover;
