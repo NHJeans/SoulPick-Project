@@ -6,8 +6,9 @@ export const Container = styled.li`
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  height: 120px;
+  height: 140px;
   border-bottom: 2px solid #333;
+  color: #333;
   cursor: pointer
 `
 
@@ -38,7 +39,7 @@ export const ContentImgWrapper = styled.div`
   overflow: hidden;
   border-radius: 16px;  
   background-color: #000;
-  video {
+  img {
     width: 100%;
     height: 100%;
     object-fit: cover;
