@@ -31,11 +31,25 @@ export const TitleContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  padding: 10px 15px;
+  padding: 10px 15px 20px 15px;
   box-sizing: border-box;
   border-bottom: 1px solid;
   .left-div {
-    width: 100%;
+    width: fit-content;
+  }
+  .right-div {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    p {
+      font-size: 15px;
+      margin-left: 8px;
+      color: gray;
+      cursor: pointer;
+      &:hover {
+        color: #5cada8;
+      }
+    }
   }
   .title {
     font-size: 22px;

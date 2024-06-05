@@ -1,22 +1,19 @@
 import { useEffect, useState } from 'react';
-import supabase from '../../apis/supabaseClient';
+import { fetchPost } from '../../apis/post';
 import Icon from '../Icon/Icon';
 import { CategoryContainer, ContentContainer, PostContainer, TitleContainer, Wrapper } from './style';
 
-function PostDetail({ postId }) {
+function PostDetail({ postId, userId }) {
   const [post, setPost] = useState({});
   const [nickname, setNickname] = useState('');
 
-  //supabase Post 데이터 불러오기
-  async function fetchPost() {
-    const { data, error } = await supabase.from('Posts').select(`*, Users(nickname)`).eq('id', postId);
-    if (error) throw error;
-    setPost(data[0]);
-    setNickname(data[0].Users.nickname);
-  }
-
   useEffect(() => {
-    fetchPost();
+    //supabase에서 post불러오기
+    (async () => {
+      const supaPost = await fetchPost(postId);
+      setPost(supaPost);
+      setNickname(supaPost.Users.nickname);
+    })();
   }, []);
 
   return (
@@ -36,6 +33,14 @@ function PostDetail({ postId }) {
               <p>{post.created_at}</p>
             </div>
           </div>
+          {post.user_id === userId ? (
+            <div className="right-div">
+              <p>수정</p>
+              <p>삭제</p>
+            </div>
+          ) : (
+            false
+          )}
         </TitleContainer>
         <ContentContainer>
           <div></div>

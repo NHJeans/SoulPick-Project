@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { fetchUser } from '../../../apis/comment';
 import Icon from '../../Icon/Icon';
-import { CommentItemContainer } from './style';
+import { ButtonDiv, CommentItemContainer } from './style';
 
-function CommentItem({ comment }) {
+function CommentItem({ comment, isMyComment }) {
   const [nickname, setNickname] = useState('');
   // const [isMyComment, setIsMyComment] = useState(false);
 
@@ -21,10 +21,19 @@ function CommentItem({ comment }) {
   return (
     <CommentItemContainer>
       <div className="comment-title">
-        <div>
-          <Icon name={'profile'} />
+        <div className="left">
+          <div className="profile">
+            <Icon name={'profile'} />
+          </div>
+          <p className="nickname">{nickname}</p>
         </div>
-        <p>{nickname}</p>
+
+        {isMyComment && (
+          <ButtonDiv>
+            <p>수정</p>
+            <p>삭제</p>
+          </ButtonDiv>
+        )}
       </div>
       <p className="comment-context">{comment.content}</p>
     </CommentItemContainer>

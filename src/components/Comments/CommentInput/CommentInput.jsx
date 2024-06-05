@@ -23,6 +23,7 @@ function CommentInput({ postId, userId }) {
     dispatch(createComment(newComment));
     //supabase insert 함수
     insertComment(newComment, postId, userId);
+    setContent('');
   };
 
   return (

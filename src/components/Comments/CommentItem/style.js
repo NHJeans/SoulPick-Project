@@ -11,13 +11,20 @@ export const CommentItemContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 18px;
-    font-weight: 500;
     margin-bottom: 15px;
-    p {
-      margin: 0 15px;
+    justify-content: space-between;
+    .left {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
     }
-    div {
+
+    .nickname {
+      margin: 0 15px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .profile {
       background-color: #efefef;
       border-radius: 50%;
       svg {
@@ -31,5 +38,18 @@ export const CommentItemContainer = styled.div`
     padding: 0 10px;
     margin-bottom: 10px;
     line-height: 140%;
+  }
+`;
+
+export const ButtonDiv = styled.div`
+  display: flex;
+  p {
+    color: gray;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 8px;
+    &:hover {
+      color: #5cada8;
+    }
   }
 `;

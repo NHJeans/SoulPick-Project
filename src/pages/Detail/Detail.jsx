@@ -22,9 +22,9 @@ function Detail() {
   return (
     <DetailContainer>
       <Center>
-        <PostDetail postId={postId} />
+        <PostDetail postId={postId} userId={userId} />
         <CommentInput postId={postId} userId={userId} />
-        <CommentList postId={postId} />
+        <CommentList postId={postId} userId={userId} />
       </Center>
     </DetailContainer>
   );
