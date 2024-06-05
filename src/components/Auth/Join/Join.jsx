@@ -35,7 +35,7 @@ const Join = () => {
         setSuccessMessage('회원가입이 완료되었습니다. 이메일을 확인해주세요.');
         setTimeout(() => {
           navigate('/auth/signin');
-        }, 3000);
+        }, 1000);
       }
     } catch (error) {
       if (error instanceof AuthError) {
