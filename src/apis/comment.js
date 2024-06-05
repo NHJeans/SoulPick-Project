@@ -28,6 +28,19 @@ export const fetchUser = async (comment) => {
   const nickname = data.nickname;
   return nickname;
 };
+
+//supabase comment 수정하기
+export const updateSupabaseComment = async (commentId, updatedContent) => {
+  const { error } = await supabase
+    .from('Comments')
+    .update({
+      content: updatedContent
+    })
+    .eq('id', commentId)
+    .select();
+  if (error) throw error;
+};
+
 //supabase comment 삭제하기
 export const deleteSupabaseComment = async (commentId) => {
   const { error } = await supabase.from('Comments').delete().eq('id', commentId);

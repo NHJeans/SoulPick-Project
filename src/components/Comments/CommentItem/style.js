@@ -80,7 +80,15 @@ export const EditingBox = styled.form`
     border-radius: 15px;
     margin-left: 25px;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #ccecea;
+    color: #5cada8;
+    font-family: inherit;
     cursor: pointer;
+    &:hover {
+      background-color: #5cada8;
+      color: white;
+    }
   }
 `;
