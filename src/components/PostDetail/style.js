@@ -97,9 +97,13 @@ export const ContentContainer = styled.div`
     height: 360px;
     background-color: gainsboro;
     border-radius: 10px;
-    margin-bottom: 30px;
+    margin: 10px auto 30px;
+    iframe {
+      border-radius: 10px;
+    }
   }
   p {
+    padding: 0 20px;
     font-size: 16px;
     line-height: 140%;
   }
