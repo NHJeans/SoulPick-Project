@@ -1,12 +1,16 @@
-import MyPost from '../../components/Information/MyPost/MyPost';
 import InfoCard from '../../components/Information/InfoCard';
+import {MyPageContainer} from "./style.js";
+import LayoutContainer from "../../components/Layout/LayoutContainer/index.js";
+import MyPost from "../../components/Information/MyPost/index.js";
 
 function MyPage() {
   return (
-    <div style={{ width: '100%' }}>
-      <InfoCard />
-      <MyPost />
-    </div>
+    <MyPageContainer>
+      <LayoutContainer>
+        <InfoCard />
+        <MyPost />
+      </LayoutContainer>
+    </MyPageContainer>
   );
 }
 

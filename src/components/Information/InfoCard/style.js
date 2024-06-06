@@ -1,25 +1,30 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 150px auto;
+  gap: 50px;
+  margin: 0 auto;
   max-width: 800px;
   width: 100%;
-  padding-bottom: 80px;  
-  border-bottom: 1px solid black;  
+  height: 300px;
+  border-bottom: 1px solid #000000;  
+  box-sizing: border-box;
 `;
 export const ProfilePictureContainer = styled.div`
-
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 `;
 export const ProfilePicture = styled.div`
   width: 150px;
   height: 150px;
   border-radius: 50%;
   background-color: #eeeeee;
-  margin-right: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,66 +38,66 @@ export const ProfilePicture = styled.div`
     border-radius: 50%;
   }
 `;
-export const Placeholder = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 export const InfoContainer = styled.div`
- 
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  width: 220px;
+  height: 180px;
 `;
 
 export const Name = styled.h2`
-  margin: 0;
   font-size: 18px;
+  line-height: 1.5;
 `;
 
 export const UserNickName = styled.h5`
-  margin: 3px 0 0;
   font-size: 18px;
+  line-height: 1.5;
   color: #5CADA8;
   font-weight: bold;
-  width: 150px;
 `;
 
 export const Email = styled.p`
-  margin: 10px 0 0;
   font-size: 18px;
+  line-height: 1.5;
 `;
 
 export const EmailInput = styled.p`
-  margin: 2px 0 20px;
   font-size: 18px;
+  line-height: 1.5;
   color: #5CADA8;
   font-weight: bold;
 `;
 
-export const EditButton = styled.button`
-  padding: 8px 13px;
+export const EditProfileButton = styled.button`
+  position: absolute;
+  right: -20px;
+  top :10px;
   font-size: 16px;
   color: #7B7B7B;
   background: none;
   border: none;
-  border-radius: 7px;
-  margin-top: -70px;
-  margin-left: 40px;
+  border-radius: 8px;
   cursor: pointer;
   &:hover {
     opacity: 0.5;
   }
 `;
 
-export const AddButton = styled.button`
-  padding: 8px 13px;
+export const AddProfileButton = styled.button`
+  position: absolute;
+  bottom: 20px;
+  padding: 8px 12px;
   font-size: 14px;
-  background-color: #CCECEA;
+  background-color: #5CADA8;
   color: #fff;
   border: none;
-  border-radius: 7px;
-  margin: 20px 0 0 50px;
+  border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
 
   &:hover {
@@ -106,12 +111,14 @@ export const StyledFileInput = styled.input`
 export const Loading = styled.div`
 
 `;
-export const StyledInput = styled.input`
-  margin: 5px 0 0;
+export const NickNameInput = styled.input`
   font-size: 18px;
-  width: 200px;
-  padding: 5px;
+  padding: 8px 12px;
   border: none;
   background-color: #EFEFEF;
   border-radius: 50px;
+  
+  &:focus {
+    outline: #333;
+  }
 `;

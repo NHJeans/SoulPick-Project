@@ -1,19 +1,16 @@
 import { useEffect, useState } from 'react';
 import supabase from '../../../apis/supabaseClient';
-import {
-  PostContainer,
-  PostTitle,
-  PostContent,
-  Thumbnail,
-  PostItem,
-  PostContentWrapper,
-  PostText,
-  PostLink,
-  CommentCount
-} from './style';
 import { getYoutubeThumbnail } from '../../../utils/youTube';
 import { IconComment } from '../../Icon/components/Icons/IconComment';
 import { getCommentCount } from '../../../utils/comment';
+import {PostContainer, PostLink, PostTitle} from "../../PostDetail/style.js";
+import {
+  CommentCount,
+  ContentDescription,
+  ContentImgWrapper,
+  ContentText,
+  ContentTextWrapper
+} from "../../Contents/ContentItem/style.js";
 
 const MyPost = () => {
   const [posts, setPosts] = useState([]);
@@ -55,29 +52,46 @@ const MyPost = () => {
 
     fetchData();
   }, [userId]);
+  console.log('@@ posts', posts)
 
   return (
     <PostContainer>
       <PostTitle>내가 쓴 글</PostTitle>
       {posts.map((post) => (
         <PostLink to={`/details/${post.id}`} key={post.id}>
-          <PostItem>
-            <PostContentWrapper>
-              <PostText>{post.title}</PostText>
-              <PostContent>{post.content}</PostContent>
-              <CommentCount>
-                <div>
-                  <IconComment name="comment" />
-                  {post.commentCount}
-                </div>
-              </CommentCount>
-            </PostContentWrapper>
-            <div>
+          <ContentTextWrapper>
+            <ContentText>{post.title}</ContentText>
+            <ContentDescription>{post.content}</ContentDescription>
+            <CommentCount>
+              <div>
+                <IconComment name="comment" />
+                {post.commentCount}
+              </div>
+            </CommentCount>
+          </ContentTextWrapper>
+          <ContentImgWrapper>
               <a href={post.link} target="_blank" rel="noopener noreferrer">
-                <Thumbnail src={getYoutubeThumbnail(post.link)} alt="유튜브 썸네일" />
+                <img src={getYoutubeThumbnail(post.link)} alt="유튜브 썸네일" />
               </a>
-            </div>
-          </PostItem>
+            {/*{thumbnail ? <img src={thumbnail} alt={`${item.title} thumbnail`} /> : <p>썸네일을 불러올 수 없습니다.</p>}*/}
+          </ContentImgWrapper>
+          {/*<PostItem>*/}
+          {/*  <PostContentWrapper>*/}
+          {/*    <PostText>{post.title}</PostText>*/}
+          {/*    <PostContent>{post.content}</PostContent>*/}
+          {/*    <CommentCount>*/}
+          {/*      <div>*/}
+          {/*        <IconComment name="comment" />*/}
+          {/*        {post.commentCount}*/}
+          {/*      </div>*/}
+          {/*    </CommentCount>*/}
+          {/*  </PostContentWrapper>*/}
+          {/*  <div>*/}
+          {/*    <a href={post.link} target="_blank" rel="noopener noreferrer">*/}
+          {/*      <Thumbnail src={getYoutubeThumbnail(post.link)} alt="유튜브 썸네일" />*/}
+          {/*    </a>*/}
+          {/*  </div>*/}
+          {/*</PostItem>*/}
         </PostLink>
       ))}
     </PostContainer>
