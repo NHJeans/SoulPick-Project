@@ -4,7 +4,7 @@ export const Container = styled.li`
   position: relative;
   height: 90px;
   padding: 30px;
-  border-bottom: 2px solid #333;
+  border-bottom: 1px solid #333;
   cursor: pointer;
 `;
 

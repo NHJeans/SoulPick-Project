@@ -1,5 +1,7 @@
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../apis/auth';
+import { logoutUser } from '../../redux/slices/userSlice';
 import { SelectBoxListContainer, SelectBoxListItem } from './style.js';
 
 const OPTIONS_LOGGED_OUT = [
@@ -14,10 +16,12 @@ const OPTIONS_LOGGED_IN = [
 
 function SelectBox({ onClose, user }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSelect = (path) => {
     if (path === '/') {
       logout();
+      dispatch(logoutUser());
     } else {
       navigate(path);
       onClose();
