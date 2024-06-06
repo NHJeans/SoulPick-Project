@@ -15,7 +15,10 @@ export const CommentInputContainer = styled.div`
     background-color: #efefef;
     height: 70px;
     width: 70px;
-
+    img {
+      width: 40px;
+      margin: 15px;
+    }
     svg {
       width: 40px;
       height: 40px;
