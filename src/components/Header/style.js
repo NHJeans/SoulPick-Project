@@ -14,9 +14,15 @@ export const HeaderStyled = styled.header`
 
 export const TitleWrapper = styled.div`
   display: flex;
-  align-items: center;
-  gap: 22px;
   height: 100%;
+
+  a {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    gap: 14px;
+  }
 `;
 export const Title = styled.h1`
   font-family: 'Pacifico', cursive;
@@ -41,7 +47,7 @@ export const MyPageButton = styled.button`
     height: 100%;
     object-fit: cover;
   }
-  
+
   svg {
     width: 22px;
     height: 22px;
