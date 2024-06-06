@@ -16,6 +16,7 @@ import {
   Loading
 } from './style';
 import { updateUser } from '../../../redux/slices/userSlice';
+import { IconEdit } from '../../Icon/components/Icons/IconEdit';
 
 function InfoCard() {
   const dispatch = useDispatch();
@@ -150,7 +151,7 @@ function InfoCard() {
         <Email>이메일</Email>
         <EmailInput>{email}</EmailInput>
       </InfoContainer>
-      <EditButton onClick={handleEditClick}>{isEditing ? '완료' : '수정'}</EditButton>
+      <EditButton onClick={handleEditClick}>{isEditing ? '완료' : <IconEdit />}</EditButton>
     </Container>
   );
 }

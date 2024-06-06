@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin: 200px auto;
   max-width: 800px;
   width: 100%;
@@ -37,7 +36,6 @@ export const Placeholder = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: darkgray;
 `;
 
 export const InfoContainer = styled.div`
@@ -73,15 +71,15 @@ export const EmailInput = styled.p`
 export const EditButton = styled.button`
   padding: 8px 13px;
   font-size: 13px;
-  background-color: #CCECEA;
   color: #fff;
+  background: none;
   border: none;
   border-radius: 7px;
   margin-top: -70px;
   margin-left: 40px;
   cursor: pointer;
   &:hover {
-    background-color: #a0d2cf;
+   
   }
 `;
 
