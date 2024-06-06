@@ -127,6 +127,7 @@ const shake = keyframes`
 `;
 
 export const ErrorMessage = styled.p`
+  padding-left: 10px;
   color: red;
   font-size: 12px;
   animation: ${shake} 0.2s linear 3;

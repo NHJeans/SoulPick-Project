@@ -1,12 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Detail from '../pages/Detail';
-import Home from '../pages/Home';
-import MyPage from '../pages/MyPage';
 import AuthLayout from '../components/Layout/AuthLayout/index.js';
 import BaseLayout from '../components/Layout/BaseLayout/index.js';
-import SignUp from '../pages/SignUp';
-import SignIn from '../pages/SignIn';
+import DetailPage from '../pages/Detail/DetailPage';
+import Home from '../pages/Home';
+import MyPage from '../pages/MyPage';
 import OAuthRedirectPage from '../pages/OAuthRedirectPage';
+import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'details/:detailId',
-        element: <Detail />
+        element: <DetailPage />
       }
     ]
   },

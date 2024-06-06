@@ -31,11 +31,25 @@ export const TitleContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  padding: 10px 15px;
+  padding: 10px 15px 20px 15px;
   box-sizing: border-box;
   border-bottom: 1px solid;
   .left-div {
-    width: 100%;
+    width: fit-content;
+  }
+  .right-div {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    p {
+      font-size: 15px;
+      margin-left: 8px;
+      color: gray;
+      cursor: pointer;
+      &:hover {
+        color: #5cada8;
+      }
+    }
   }
   .title {
     font-size: 22px;
@@ -51,10 +65,18 @@ export const TitleContainer = styled.div`
     .profile {
       background-color: #efefef;
       border-radius: 50%;
-      padding: 5px;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       svg {
         width: 17px;
       }
+    }
+    img {
+      width: 26px;
+      border-radius: 50%;
     }
     p {
       margin: 0 10px;
@@ -69,7 +91,7 @@ export const ContentContainer = styled.div`
   width: 100%;
   margin: 20px 0;
 
-  div {
+  .youtude {
     width: 640px;
     height: 360px;
     background-color: gainsboro;
@@ -79,5 +101,31 @@ export const ContentContainer = styled.div`
   p {
     font-size: 16px;
     line-height: 140%;
+  }
+`;
+
+export const EditBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+
+  textarea {
+    width: 100%;
+    resize: none;
+    padding: 15px 20px;
+    font-family: inherit;
+    font-size: inherit;
+    border: 1px solid;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    width: 120px;
+    margin-left: 20px;
+    border: transparent;
+    border-radius: 15px;
+    font-size: 18px;
+    font-family: inherit;
   }
 `;

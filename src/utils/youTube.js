@@ -1,4 +1,3 @@
-// src/utils/youtube.js
 export function getYoutubeThumbnail(link) {
   const videoId = link.split('v=')[1];
   if (!videoId) {

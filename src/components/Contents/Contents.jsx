@@ -1,5 +1,5 @@
 import {ContentsContainer, ContentTitle, DefaultContents} from "./style.js";
-import ContentList from "./components/ContentList/index.js";
+import ContentList from "./ContentList/index.js";
 import usePostsData from "../../hooks/Data/index.js";
 
 function Contents({title}) {
