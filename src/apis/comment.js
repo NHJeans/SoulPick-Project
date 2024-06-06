@@ -25,8 +25,7 @@ export const insertComment = async (comment, postId, userId) => {
 export const fetchUser = async (comment) => {
   const { data, error } = await supabase.from('Users').select('*').eq('id', comment.user_id).single();
   if (error) throw error;
-  const nickname = data.nickname;
-  return nickname;
+  return data;
 };
 
 //supabase comment 수정하기

@@ -27,7 +27,7 @@ export const CommentItemContainer = styled.div`
     .profile {
       background-color: #efefef;
       border-radius: 50%;
-      svg {
+      img {
         width: 20px;
         padding: 10px;
       }

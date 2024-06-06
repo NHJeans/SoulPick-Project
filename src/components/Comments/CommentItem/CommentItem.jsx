@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteSupabaseComment, fetchUser, updateSupabaseComment } from '../../../apis/comment';
 import { deleteComment, updateComment } from '../../../redux/slices/commentSlice';
-import Icon from '../../Icon/Icon';
 import { ButtonDiv, CommentContent, CommentItemContainer, EditingBox } from './style';
 
 function CommentItem({ comment, isMyComment }) {
   const [nickname, setNickname] = useState('');
+  const [img, setImg] = useState('');
   const [isEdit, setIsEdit] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
 
@@ -19,8 +19,9 @@ function CommentItem({ comment, isMyComment }) {
       null;
     } else {
       (async () => {
-        const supaNickname = await fetchUser(comment);
-        setNickname(supaNickname);
+        const user = await fetchUser(comment);
+        setNickname(user.nickname);
+        setImg(user.profile_img);
       })();
     }
   }, []);
@@ -61,7 +62,7 @@ function CommentItem({ comment, isMyComment }) {
       <div className="comment-title">
         <div className="left">
           <div className="profile">
-            <Icon name={'profile'} />
+            <img src={img} />
           </div>
           <p className="nickname">{nickname}</p>
         </div>
