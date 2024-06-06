@@ -13,7 +13,7 @@ import {
 } from "./style.js";
 import { useState } from 'react';
 import supabase from "../../apis/supabaseClient.js";
-import ModalSelectBox from "./components/ModalSelectBox/index.js";
+import ModalSelectBox from "./ModalSelectBox/index.js";
 
 function ModalLayout({ closeModal }) {
   const [formData, setFormData] = useState({
@@ -68,7 +68,7 @@ function ModalLayout({ closeModal }) {
               <ModalTitle>my Pick!</ModalTitle>
               <ModalForm onSubmit={handleSubmit}>
                 <div style={{display: 'flex', flexDirection: 'row', gap: '10px', alignItems: 'center'}}>
-                  <div style={{display: 'flex', flexDirection: 'column', flexGrow: '1'}}>
+                  <div style={{display: 'flex', flexDirection: 'column', flexGrow: '1', gap: '20px'}}>
                     <ModalInput
                       type="text"
                       placeholder="제목을 입력해주세요."
