@@ -7,7 +7,7 @@ import {
   CommentCount,
   Container,
   ContentDescription,
-  ContentImgWrapper,
+  ContentImgWrapper, ContentLink,
   ContentText,
   ContentTextWrapper
 } from './style.js';
@@ -26,7 +26,7 @@ function ContentItem({ item }) {
 
   return (
     <Container>
-      <Link style={{ textDecoration: 'none', display: 'flex' }} to={`/details/${item.id}`}>
+      <ContentLink to={`/details/${item.id}`}>
         <ContentTextWrapper>
           <ContentText>{item.title}</ContentText>
           <ContentDescription>{item.content}</ContentDescription>
@@ -40,7 +40,7 @@ function ContentItem({ item }) {
         <ContentImgWrapper>
           {thumbnail ? <img src={thumbnail} alt={`${item.title} thumbnail`} /> : <p>썸네일을 불러올 수 없습니다.</p>}
         </ContentImgWrapper>
-      </Link>
+      </ContentLink>
     </Container>
   );
 }
