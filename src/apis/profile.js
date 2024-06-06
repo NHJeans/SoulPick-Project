@@ -18,19 +18,37 @@ export const getUserProfile = async () => {
   return data;
 };
 
-export const updateUserProfile = async (updates) => {
-  const user = supabase.auth.user();
-  if (!user) {
-    return null;
-  }
-  const { data, error } = await supabase
-    .from('users')
-    .update(updates)
-    .eq('id', user.id);
+export const updateProfileImage = async (userId, newImage) => {
+  try {
+    const { error } = await supabase
+      .from('Users')
+      .update({ profile_img: newImage })
+      .eq('id', userId);
 
-  if (error) {
-    console.error('프로필 업데이트 오류:', error.message);
-    return null;
+    if (error) {
+      throw new Error(error.message);
+    }
+    return newImage;
+  } catch (error) {
+    console.error(error.message);
+    throw error;
   }
-  return data;
+};
+
+export const fetchUserProfileImage = async (userId) => {
+  try {
+    const { data, error } = await supabase
+      .from('Users')
+      .select('profile_img')
+      .eq('id', userId)
+      .single();
+
+    if (error) {
+      throw new Error(error.message);
+    }
+    return data.profile_img;
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
 };

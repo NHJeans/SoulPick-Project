@@ -6,7 +6,7 @@ import userSlice from '../slices/userSlice';
 const store = configureStore({
   reducer: {
     comment: commentSlice,
-    user: userSlice
+    user: userSlice,
   }
 });
 export default store;
