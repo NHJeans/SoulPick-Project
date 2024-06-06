@@ -1,28 +1,33 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import supabase from '../../apis/supabaseClient.js';
+import { createPost } from '../../redux/slices/postSlice';
+import ModalSelectBox from './ModalSelectBox/index.js';
 import {
   Container,
-  ContentInner, ErrorMessage,
+  ContentInner,
+  ErrorMessage,
   ModalContainer,
   ModalContent,
   ModalContentWrapper,
   ModalForm,
-  ModalInput, ModalSelectInputWrapper,
+  ModalInput,
+  ModalSelectInputWrapper,
   ModalSubmitButton,
   ModalTextarea,
-  ModalTitle, ModalTopInputWrapper,
+  ModalTitle,
+  ModalTopInputWrapper,
   ScreenDim
-} from "./style.js";
-import { useState } from 'react';
-import supabase from "../../apis/supabaseClient.js";
-import ModalSelectBox from "./ModalSelectBox/index.js";
+} from './style.js';
 
 function ModalLayout({ closeModal }) {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     title: '',
     link: '',
     content: '',
     category: ''
   });
-
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -46,9 +51,8 @@ function ModalLayout({ closeModal }) {
 
     if (!validateForm()) return;
 
-    const { data, error } = await supabase
-      .from('Posts')
-      .insert([{ ...formData }]);
+    dispatch(createPost(formData));
+    const { data, error } = await supabase.from('Posts').insert([{ ...formData }]);
 
     if (error) {
       console.error('데이터 삽입 오류,,,ㅠㅠ:', error);
