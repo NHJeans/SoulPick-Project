@@ -90,17 +90,17 @@ const oauthLogin = async (provider, options) => {
 
 // 구글 로그인 및 회원가입
 export const googleLogin = async () => {
-  await oauthLogin("google", { redirectTo: import.meta.env.VITE_OAUTH_REDIRECT_URL });
+  await oauthLogin("google", { redirectTo: "https://soul-pick-project.vercel.app/oauth-redirect" });
 };
 
 // 깃헙 로그인 및 회원가입
 export const githubLogin = async () => {
-  await oauthLogin("github", { redirectTo: import.meta.env.VITE_OAUTH_REDIRECT_URL });
+  await oauthLogin("github", { redirectTo: "https://soul-pick-project.vercel.app/oauth-redirect" });
 };
 
 // 카카오 로그인 및 회원가입
 export const kakaoLogin = async () => {
-  await oauthLogin("kakao", { redirectTo: import.meta.env.VITE_OAUTH_REDIRECT_URL });
+  await oauthLogin("kakao", { redirectTo: "https://soul-pick-project.vercel.app/oauth-redirect" });
 };
 
 // 사용자 정보 추출
