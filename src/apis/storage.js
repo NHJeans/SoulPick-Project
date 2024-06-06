@@ -11,31 +11,34 @@ export const uploadFile = async (file) => {
       useWebWorker: true,
       fileType: "image/webp"
     }
-    const compressedFile = await imageCompression(file, options)
+    const compressedFile = await imageCompression(file, options);
 
-    const { data: profileImageData, error: uploadError } = await supabase.storage
-      .from("soul-pick")
-      .upload(`public/${uuidv4()}.webp`, compressedFile, {
+    const filePath = `public/${uuidv4()}.webp`;
+    const { error: uploadError } = await supabase.storage
+      .from('soul-pick')
+      .upload(filePath, compressedFile, {
         cacheControl: '3600',
         upsert: false
       });
 
     if (uploadError) {
-      console.error("업로드 오류:", uploadError.message);
-      return;
+      console.error('업로드 오류:', uploadError.message);
+      return null;
     }
 
-    const { data: publicUrlData, error: publicUrlError } = supabase.storage
-      .from("soul-pick")
-      .getPublicUrl(profileImageData.path);
+    const { data: publicUrlData, error: publicUrlError } = await supabase.storage
+      .from('soul-pick')
+      .getPublicUrl(filePath);
 
     if (publicUrlError) {
-      console.log(publicUrlError);
+      console.error('Public URL 생성 오류:', publicUrlError.message);
+      return null;
     }
+
     return publicUrlData.publicUrl;
 
   } catch (error) {
-    console.error("파일 압축 오류");
+    console.error('파일 압축 오류:', error.message);
     throw error;
   }
 };
