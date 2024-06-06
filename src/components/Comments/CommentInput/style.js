@@ -16,8 +16,10 @@ export const CommentInputContainer = styled.div`
     height: 70px;
     width: 70px;
     img {
-      width: 40px;
-      margin: 15px;
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 50%;
     }
     svg {
       width: 40px;

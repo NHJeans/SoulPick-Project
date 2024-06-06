@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deleteSupabasePost, fetchPost, updateSupabasePost } from '../../apis/post';
 import Icon from '../Icon/Icon';
-import { CategoryContainer, ContentContainer, PostContainer, TitleContainer, Wrapper } from './style';
+import { CategoryContainer, ContentContainer, EditBox, PostContainer, TitleContainer, Wrapper } from './style';
 
 function PostDetail({ postId }) {
   const [post, setPost] = useState({});
   const [postNickname, setPostNickname] = useState('');
   const [postProfile, setPostProfile] = useState('');
   const [isEdit, setIsEdit] = useState(false);
-  const [updateContent, setUpdateContent] = useState(post.content);
+  const [updateContent, setUpdateContent] = useState('');
 
   const user = useSelector((state) => state.user.user);
 
@@ -27,6 +27,7 @@ function PostDetail({ postId }) {
       setPostNickname(supaPost.Users.nickname);
       console.log(supaPost.Users);
       setPostProfile(supaPost.Users.profile_img);
+      setUpdateContent(supaPost.content);
     })();
   }, []);
 
@@ -82,12 +83,12 @@ function PostDetail({ postId }) {
           )}
         </TitleContainer>
         <ContentContainer>
-          <div></div>
+          <div className="youtude"></div>
           {isEdit ? (
-            <div>
+            <EditBox>
               <textarea defaultValue={post.content} onChange={(e) => setUpdateContent(e.target.value)} />
               <button onClick={handleUpdatePostBtn}>등록</button>
-            </div>
+            </EditBox>
           ) : (
             <p>{post.content}</p>
           )}
