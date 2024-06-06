@@ -1,15 +1,25 @@
 import {ContentsContainer, ContentTitle, DefaultContents} from "./style.js";
 import ContentList from "./ContentList/index.js";
-import usePostsData from "../../hooks/Data/index.js";
+import {fetchSupabaseData} from "../../apis/post.js";
+import {useEffect, useState} from "react";
 
 function Contents({title}) {
-  const { data, error } = usePostsData();
+  const [posts, setPosts] = useState([]);
 
-  if (error) {
-    return <div>Error loading posts.</div>;
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchSupabaseData();
+        setPosts(data);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
-  const filteredData = title === "전체" ? data : data.filter(item => item.category === title)
+
+  const filteredData = title === "전체" ? posts : posts.filter(item => item.category === title)
 
   return (
     <ContentsContainer>
