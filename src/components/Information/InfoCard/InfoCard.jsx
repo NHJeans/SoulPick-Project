@@ -5,18 +5,17 @@ import supabase from '../../../apis/supabaseClient';
 import { updateUser } from '../../../redux/slices/userSlice';
 import { IconEdit } from '../../Icon/components/Icons/IconEdit';
 import {
-  AddButton,
+  AddProfileButton,
   Container,
-  EditButton,
+  EditProfileButton,
   Email,
   EmailInput,
   InfoContainer,
   Loading,
-  Name,
+  Name, NickNameInput,
   ProfilePicture,
   ProfilePictureContainer,
   StyledFileInput,
-  StyledInput,
   UserNickName
 } from './style';
 
@@ -116,7 +115,7 @@ function InfoCard() {
 
   const renderNickname = () => {
     if (isEditing) {
-      return <StyledInput type="text" value={nickname} onChange={handleNicknameChange} />;
+      return <NickNameInput type="text" value={nickname} onChange={handleNicknameChange} />;
     } else {
       return <UserNickName>{nickname}</UserNickName>;
     }
@@ -134,7 +133,7 @@ function InfoCard() {
             ''
           )}
         </ProfilePicture>
-        {isEditing && <AddButton onClick={() => fileInputRef.current.click()}>추가</AddButton>}
+        {isEditing && <AddProfileButton onClick={() => fileInputRef.current.click()}>추가</AddProfileButton>}
         <StyledFileInput type="file" ref={fileInputRef} onChange={handleImageUpload} />
       </ProfilePictureContainer>
     );
@@ -152,8 +151,8 @@ function InfoCard() {
         {renderNickname()}
         <Email>이메일</Email>
         <EmailInput>{email}</EmailInput>
+        <EditProfileButton onClick={handleEditClick}>{isEditing ? '저장' : <IconEdit />}</EditProfileButton>
       </InfoContainer>
-      <EditButton onClick={handleEditClick}>{isEditing ? '저장' : <IconEdit />}</EditButton>
     </Container>
   );
 }
