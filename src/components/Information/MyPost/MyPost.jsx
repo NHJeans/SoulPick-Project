@@ -52,7 +52,6 @@ const MyPost = () => {
 
     fetchData();
   }, [userId]);
-  console.log('@@ posts', posts)
 
   return (
     <PostContainer>
@@ -73,25 +72,7 @@ const MyPost = () => {
               <a href={post.link} target="_blank" rel="noopener noreferrer">
                 <img src={getYoutubeThumbnail(post.link)} alt="유튜브 썸네일" />
               </a>
-            {/*{thumbnail ? <img src={thumbnail} alt={`${item.title} thumbnail`} /> : <p>썸네일을 불러올 수 없습니다.</p>}*/}
           </ContentImgWrapper>
-          {/*<PostItem>*/}
-          {/*  <PostContentWrapper>*/}
-          {/*    <PostText>{post.title}</PostText>*/}
-          {/*    <PostContent>{post.content}</PostContent>*/}
-          {/*    <CommentCount>*/}
-          {/*      <div>*/}
-          {/*        <IconComment name="comment" />*/}
-          {/*        {post.commentCount}*/}
-          {/*      </div>*/}
-          {/*    </CommentCount>*/}
-          {/*  </PostContentWrapper>*/}
-          {/*  <div>*/}
-          {/*    <a href={post.link} target="_blank" rel="noopener noreferrer">*/}
-          {/*      <Thumbnail src={getYoutubeThumbnail(post.link)} alt="유튜브 썸네일" />*/}
-          {/*    </a>*/}
-          {/*  </div>*/}
-          {/*</PostItem>*/}
         </PostLink>
       ))}
     </PostContainer>
