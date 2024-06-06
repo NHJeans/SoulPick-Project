@@ -11,6 +11,7 @@ export const ContentTitle = styled.h2`
   margin-bottom: 30px;
   text-decoration: underline;
   text-decoration-color: #5cada8;
+  text-underline-offset : 10px;
 `;
 
 export const DefaultContents = styled.div`
