@@ -76,6 +76,7 @@ export const TitleContainer = styled.div`
     }
     img {
       width: 26px;
+      height: 26px;
       border-radius: 50%;
     }
     p {
