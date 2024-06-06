@@ -1,9 +1,11 @@
-import Information from '../../components/Information';
+import MyPost from '../../components/Information/MyPost/MyPost';
+import InfoCard from '../../components/Information/InfoCard';
 
 function MyPage() {
   return (
     <div style={{ width: '100%' }}>
-      <Information />
+      <InfoCard />
+      <MyPost />
     </div>
   );
 }
