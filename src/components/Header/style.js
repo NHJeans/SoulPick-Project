@@ -31,7 +31,7 @@ export const Title = styled.h1`
   color: #ffffff;
 `;
 
-export const MyPageButton = styled.button`
+export const MyPageButton = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
