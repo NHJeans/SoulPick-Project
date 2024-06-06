@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import YouTube from 'react-youtube';
 import { deleteSupabasePost, fetchPost, updateSupabasePost } from '../../apis/post';
 import Icon from '../Icon/Icon';
 import { CategoryContainer, ContentContainer, EditBox, PostContainer, TitleContainer, Wrapper } from './style';
@@ -18,6 +19,10 @@ function PostDetail({ postId }) {
 
   const postTime = String(post.created_at);
   const date = postTime.slice(0, 10).split('-').join('.');
+
+  //youtube 에서 videoId추출
+  const youtubeURL = String(post.link);
+  const videoId = youtubeURL.split('=')[1];
 
   useEffect(() => {
     //supabase에서 post불러오기
@@ -83,7 +88,9 @@ function PostDetail({ postId }) {
           )}
         </TitleContainer>
         <ContentContainer>
-          <div className="youtude"></div>
+          <div className="youtude">
+            <YouTube videoId={videoId} />
+          </div>
           {isEdit ? (
             <EditBox>
               <textarea defaultValue={post.content} onChange={(e) => setUpdateContent(e.target.value)} />
