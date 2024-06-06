@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {Link} from "react-router-dom";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -15,16 +16,32 @@ export const CategoryContainer = styled.div`
 `;
 
 export const PostContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 800px;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
+  position: relative;
+  padding-bottom: 120px;
+  width: 100%;
+  cursor: pointer;
   box-sizing: border-box;
-  border-top: 3px solid #5cada8;
-  border-bottom: 1px solid #5cada8;
 `;
+export const PostTitle = styled.h1`
+  padding: 50px 0 20px;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-decoration: underline;
+  text-decoration-color: #5cada8;
+  text-underline-offset: 10px;
+`;
+export const PostLink = styled(Link)`
+  position: relative;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+`
+
+
 
 export const TitleContainer = styled.div`
   display: flex;

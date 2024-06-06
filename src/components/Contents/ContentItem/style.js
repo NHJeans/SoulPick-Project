@@ -1,12 +1,18 @@
 import { styled } from 'styled-components';
+import {Link} from "react-router-dom";
 
 export const Container = styled.li`
   position: relative;
-  height: 90px;
   padding: 30px;
   border-bottom: 1px solid #333;
   cursor: pointer;
 `;
+
+export const ContentLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  text-decoration: none;  
+`
 
 export const ContentTextWrapper = styled.div`
   display: flex;
