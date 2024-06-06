@@ -28,8 +28,10 @@ export const CommentItemContainer = styled.div`
       background-color: #efefef;
       border-radius: 50%;
       img {
-        width: 20px;
-        padding: 10px;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
       }
       svg {
         width: 20px;
