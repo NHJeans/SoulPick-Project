@@ -6,11 +6,11 @@ import {
   ContentText,
   ContentTextWrapper
 } from "./style.js";
-import {getYoutubeThumbnail} from "../../../../utils/youTube.js";
+import {getYoutubeThumbnail} from "../../../utils/youTube.js";
 import {Link} from "react-router-dom";
-import {IconComment} from "../../../Icon/components/Icons/IconComment.jsx";
+import {IconComment} from "../../Icon/components/Icons/IconComment.jsx";
 import {useEffect, useState} from "react";
-import {getCommentCount} from "../../../../utils/comment.js";
+import {getCommentCount} from "../../../utils/comment.js";
 function ContentItem({item}){
   const [commentCount, setCommentCount] = useState(0);
   const thumbnail = getYoutubeThumbnail(item.link);

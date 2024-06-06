@@ -35,6 +35,13 @@ export const MyPageButton = styled.button`
   align-items: center;
   cursor: pointer;
   border: none;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
   svg {
     width: 22px;
     height: 22px;
