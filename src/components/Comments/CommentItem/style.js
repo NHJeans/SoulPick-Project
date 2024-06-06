@@ -31,6 +31,10 @@ export const CommentItemContainer = styled.div`
         width: 20px;
         padding: 10px;
       }
+      svg {
+        width: 20px;
+        padding: 10px;
+      }
     }
   }
 `;

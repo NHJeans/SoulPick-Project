@@ -1,14 +1,5 @@
 import supabase from './supabaseClient';
 
-/**Detail.jsx */
-//supabase getUser하기
-export const getCurrentUser = async () => {
-  const { data, error } = await supabase.auth.getUser();
-  const userid = data.user.id;
-  if (error) throw error;
-  return userid;
-};
-
 /**CommentInput.jsx */
 //supabase comment 등록하기
 export const insertComment = async (comment, postId, userId) => {
@@ -22,7 +13,7 @@ export const insertComment = async (comment, postId, userId) => {
 
 /** CommentItem.jsx */
 //Users 테이블에서 댓글 쓴 사용자의 정보 받아오기
-export const fetchUser = async (comment) => {
+export const fetchCommentUser = async (comment) => {
   const { data, error } = await supabase.from('Users').select('*').eq('id', comment.user_id).single();
   if (error) throw error;
   return data;

@@ -65,10 +65,17 @@ export const TitleContainer = styled.div`
     .profile {
       background-color: #efefef;
       border-radius: 50%;
-      padding: 5px;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       svg {
         width: 17px;
       }
+    }
+    img {
+      width: 26px;
     }
     p {
       margin: 0 10px;

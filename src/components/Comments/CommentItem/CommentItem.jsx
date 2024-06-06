@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteSupabaseComment, fetchUser, updateSupabaseComment } from '../../../apis/comment';
+import { deleteSupabaseComment, fetchCommentUser, updateSupabaseComment } from '../../../apis/comment';
 import { deleteComment, updateComment } from '../../../redux/slices/commentSlice';
+import Icon from '../../Icon';
 import { ButtonDiv, CommentContent, CommentItemContainer, EditingBox } from './style';
 
 function CommentItem({ comment, isMyComment }) {
@@ -19,7 +20,7 @@ function CommentItem({ comment, isMyComment }) {
       null;
     } else {
       (async () => {
-        const user = await fetchUser(comment);
+        const user = await fetchCommentUser(comment);
         setNickname(user.nickname);
         setImg(user.profile_img);
       })();
@@ -37,6 +38,7 @@ function CommentItem({ comment, isMyComment }) {
   //수정 등록 버튼 누를 시
   const handleCompleteEdit = (e) => {
     e.preventDefault();
+    if (!editedContent) return alert('댓글이 빈칸일 수 없습니다.');
     setIsEdit(false);
     //redux state 값 수정
     dispatch(
@@ -51,19 +53,20 @@ function CommentItem({ comment, isMyComment }) {
 
   //삭제 버튼 누를 시
   const handleDeleteBtn = () => {
-    //supabase comment삭제
-    deleteSupabaseComment(comment.id);
-    //redux comment list에서 해당 값 삭제
-    dispatch(deleteComment(comment.id));
+    const answer = confirm('정말 댓글을 삭제하시겠습니까?');
+    if (answer) {
+      //supabase comment삭제
+      deleteSupabaseComment(comment.id);
+      //redux comment list에서 해당 값 삭제
+      dispatch(deleteComment(comment.id));
+    }
   };
 
   return (
     <CommentItemContainer>
       <div className="comment-title">
         <div className="left">
-          <div className="profile">
-            <img src={img} />
-          </div>
+          <div className="profile">{img ? <img src={img} /> : <Icon name={'profile'} />}</div>
           <p className="nickname">{nickname}</p>
         </div>
 
