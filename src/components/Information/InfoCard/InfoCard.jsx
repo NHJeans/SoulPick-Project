@@ -1,7 +1,9 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadFile } from '../../../apis/storage';
 import supabase from '../../../apis/supabaseClient';
+import { updateUser } from '../../../redux/slices/userSlice';
+import { IconEdit } from '../../Icon/components/Icons/IconEdit';
 import {
   AddButton,
   Container,
@@ -9,13 +11,14 @@ import {
   Email,
   EmailInput,
   InfoContainer,
+  Loading,
   Name,
   ProfilePicture,
-  UserNickName,
+  ProfilePictureContainer,
   StyledFileInput,
-  Loading
+  StyledInput,
+  UserNickName
 } from './style';
-import { updateUser } from '../../../redux/slices/userSlice';
 
 function InfoCard() {
   const dispatch = useDispatch();
@@ -113,7 +116,7 @@ function InfoCard() {
 
   const renderNickname = () => {
     if (isEditing) {
-      return <input type="text" value={nickname} onChange={handleNicknameChange} />;
+      return <StyledInput type="text" value={nickname} onChange={handleNicknameChange} />;
     } else {
       return <UserNickName>{nickname}</UserNickName>;
     }
@@ -121,7 +124,7 @@ function InfoCard() {
 
   const renderProfileImage = () => {
     return (
-      <div>
+      <ProfilePictureContainer>
         <ProfilePicture>
           {newProfileImg ? (
             <img src={URL.createObjectURL(newProfileImg)} alt="Profile" />
@@ -133,7 +136,7 @@ function InfoCard() {
         </ProfilePicture>
         {isEditing && <AddButton onClick={() => fileInputRef.current.click()}>추가</AddButton>}
         <StyledFileInput type="file" ref={fileInputRef} onChange={handleImageUpload} />
-      </div>
+      </ProfilePictureContainer>
     );
   };
 
@@ -150,7 +153,7 @@ function InfoCard() {
         <Email>이메일</Email>
         <EmailInput>{email}</EmailInput>
       </InfoContainer>
-      <EditButton onClick={handleEditClick}>{isEditing ? '완료' : '수정'}</EditButton>
+      <EditButton onClick={handleEditClick}>{isEditing ? '저장' : <IconEdit />}</EditButton>
     </Container>
   );
 }

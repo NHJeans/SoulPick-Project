@@ -1,6 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { styles } from './style';
+import { useEffect, useState } from 'react';
 import supabase from '../../../apis/supabaseClient';
+import {
+  PostContainer,
+  PostTitle,
+  PostContent,
+  Thumbnail,
+  PostItem,
+  PostContentWrapper,
+  PostText,
+  PostLink,
+  CommentCount
+} from './style';
+import { getYoutubeThumbnail } from '../../../utils/youTube';
+import { IconComment } from '../../Icon/components/Icons/IconComment';
+import { getCommentCount } from '../../../utils/comment';
 
 const MyPost = () => {
   const [posts, setPosts] = useState([]);
@@ -29,8 +42,13 @@ const MyPost = () => {
         if (error) {
           console.log('error => ', error);
         } else {
-          console.log('data => ', data);
-          setPosts(data);
+          const postsWithComments = await Promise.all(
+            data.map(async (post) => {
+              const commentCount = await getCommentCount(post.id);
+              return { ...post, commentCount };
+            })
+          );
+          setPosts(postsWithComments);
         }
       }
     };
@@ -38,35 +56,31 @@ const MyPost = () => {
     fetchData();
   }, [userId]);
 
-  const getYoutubeThumbnail = (link) => {
-    const youtubeRegex =
-      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    const match = link.match(youtubeRegex);
-    if (match && match[1]) {
-      return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
-    }
-    return link || 'default_image_url_here';
-  };
-
   return (
-    <div style={styles.centerStyle}>
-      <div style={styles.containerStyle}>
-        <p style={styles.textTop}>내가 쓴 글</p>
-      </div>
+    <PostContainer>
+      <PostTitle>내가 쓴 글</PostTitle>
       {posts.map((post) => (
-        <div key={post.id} style={styles.margin}>
-          <div style={styles.box}>
-            <p style={styles.textSecond}>{post.title}</p>
-            <p style={styles.box1}>{post.content}</p>
-          </div>
-          <div>
-            <a href={post.link} target="_blank" rel="noopener noreferrer">
-              <img style={styles.imgStyle} src={getYoutubeThumbnail(post.link)} alt="유튜브 썸네일" />
-            </a>
-          </div>
-        </div>
+        <PostLink to={`/details/${post.id}`} key={post.id}>
+          <PostItem>
+            <PostContentWrapper>
+              <PostText>{post.title}</PostText>
+              <PostContent>{post.content}</PostContent>
+              <CommentCount>
+                <div>
+                  <IconComment name="comment" />
+                  {post.commentCount}
+                </div>
+              </CommentCount>
+            </PostContentWrapper>
+            <div>
+              <a href={post.link} target="_blank" rel="noopener noreferrer">
+                <Thumbnail src={getYoutubeThumbnail(post.link)} alt="유튜브 썸네일" />
+              </a>
+            </div>
+          </PostItem>
+        </PostLink>
       ))}
-    </div>
+    </PostContainer>
   );
 };
 

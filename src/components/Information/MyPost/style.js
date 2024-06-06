@@ -1,74 +1,82 @@
-export const styles = {
-  //  내가 쓴 글-------------------
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-  borderOne: {
-    borderTop: '2px solid black',
-    margin: '0 0 20px'
-  },
-  borderTwo: {
-    borderTop: '2px solid black',
-    margin: '30px 0 0',
-    width: '800px',
-    display: 'block',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },
-  centerStyle: {
-    display: 'flex',
-    textalign: 'center',
-    margin: '0 auto',
-    width: 'fit-content',
-    marginTop: '-80px',
-    width: '800px',
-    // borderBottom: '2px solid #7B7B7B',
-    flexDirection: 'column'
-  },
+export const PostContainer = styled.div`
+  position: relative;
+  display: flex;
+  text-align: left;
+  margin: 0 auto;
+  width: 800px;
+  margin-top: -80px;
+  flex-direction: column;
+`;
 
-  containerStyle: {
-    // border: '0.5px solid black',
-    padding: '10px',
-    borderRadius: '20px'
-  },
 
-  textTop: {
-    fontSize: '30px',
-    margin: '0 0 10px',
-    fontWeight: 'bold',
-    fontStyle: 'italic',
-    color: '#A0D2CF',
-    display: 'flex',
-    justifyContent: 'center'
 
-    // textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
-  },
+export const PostTitle = styled.p`
+  font-size: 30px;
+  margin: 0 0 10px;
+  font-weight: bold;
+  text-align: left;
+  color: black;
+`;
 
-  textSecond: {
-    fontSize: '25px',
-    margin: ' 0 0 10px '
-  },
+export const PostText = styled.p`
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 10px;
+  padding-left: 20px;
+`;
 
-  imgStyle: {
-    height: '90px',
-    width: '150px',
-    float: 'right',
-    marginBottom: '15px',
-    marginRight: '10px',
-    borderRadius: '10px'
-  },
-  margin: {
-    marginTop: '30px',
-    // marginLeft: '20px',
-    // marginRight: '20px',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    borderBottom: '1px solid black'
-  },
-  box: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  box1: {
-    marginBottom: '25px'
+export const Thumbnail = styled.img`
+  height: 90px;
+  width: 150px;
+  float: right;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  border-radius: 10px;
+`;
+
+export const PostItem = styled.div`
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+`;
+
+export const PostContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const PostContent = styled.div`
+  padding-left: 20px;
+`;
+export const PostLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
   }
-};
+`;
+
+export const CommentCount = styled.div`
+  position: absolute;
+  right: 200px;
+
+  font-size: 24px;
+  color: #a0d2cf;
+  font-weight: 500;
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 10px;
+    svg {
+      width: 30px;
+      margin-right: 5px;
+    }
+  }
+`;
