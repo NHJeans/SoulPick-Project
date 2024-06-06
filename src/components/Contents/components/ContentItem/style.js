@@ -6,8 +6,10 @@ export const Container = styled.li`
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  height: 120px;
+  height: 140px;
   border-bottom: 2px solid #333;
+  color: #333;
+  cursor: pointer
 `
 
 export const ContentTextWrapper = styled.div`
@@ -42,4 +44,13 @@ export const ContentImgWrapper = styled.div`
     height: 100%;
     object-fit: cover;
   }
+`
+
+export const CommentCount = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-size: 30px;
+  color: #A0D2CF;
+  font-weight: 700;
 `

@@ -1,19 +1,56 @@
 import {
+  CommentCount,
+  Container,
+  ContentDescription,
+  ContentImgWrapper,
+  ContentText,
+  ContentTextWrapper
+} from "./style.js";
+import {getYoutubeThumbnail} from "../../../../utils/youTube.js";
+import {Link} from "react-router-dom";
+import {IconComment} from "../../../Icon/components/Icons/IconComment.jsx";
+import {useEffect, useState} from "react";
+import {getCommentCount} from "../../../../utils/comment.js";
+function ContentItem({item}){
+  const [commentCount, setCommentCount] = useState(0);
+  const thumbnail = getYoutubeThumbnail(item.link);
 
-} from "../ContentList/style.js";
-import {Container, ContentDescription, ContentImgWrapper, ContentText, ContentTextWrapper} from "./style.js";
+  useEffect(() => {
+    async function fetchCommentCount() {
+      const count = await getCommentCount(item.id);
+      setCommentCount(count);
+    }
 
-function ContentItem({content}){
+    fetchCommentCount();
+  }, [item.id]);
+
   return (
-    <Container>
-      <ContentTextWrapper>
-        <ContentText>{content.name}</ContentText>
-        <ContentDescription>{content.contents}</ContentDescription>
-      </ContentTextWrapper>
-      <ContentImgWrapper>
-        <img src="" alt='썸네일'/>
-      </ContentImgWrapper>
-    </Container>
-  )
+    <>
+      <Link style={{ textDecoration: "none"}} to={`/post/${item.id}`}>
+        <Container>
+          <ContentTextWrapper>
+            <ContentText>{item.title}</ContentText>
+            <ContentDescription>{item.content}</ContentDescription>
+          </ContentTextWrapper>
+          <CommentCount>
+            <IconComment name='comment'/>
+            {commentCount}
+          </CommentCount>
+          <ContentImgWrapper>
+            {thumbnail ? (
+              <img src={thumbnail} alt={`${item.title} thumbnail`} />
+            ) : (
+              <p>썸네일을 불러올 수 없습니다.</p>
+            )}
+          </ContentImgWrapper>
+
+        </Container>
+      </Link>
+    </>
+
+
+)
 }
+
+
 export default ContentItem;
