@@ -30,6 +30,7 @@ function InfoCard() {
           if (currentUserNickname) {
             setNickname(currentUserNickname);
           }
+          setEmail(userData.user.email);
         }
       }
     };
@@ -37,33 +38,24 @@ function InfoCard() {
     fetchData();
   }, []);
 
-  const handleEditClick = () => {
-    if (!isEditing && currentUser) {
-      const currentUserNickname = users.find((user) => user.id === currentUser.id)?.nickname;
-      if (currentUserNickname) {
-        setNickname(currentUserNickname);
+  const handleEditClick = async () => {
+    if (isEditing && currentUser) {
+      const { error } = await supabase.from('Users').update({ nickname }).eq('id', currentUser.id);
+
+      if (error) {
+        console.log('Update error => ', error);
+      } else {
+        const updatedUsers = users.map((user) => (user.id === currentUser.id ? { ...user, nickname } : user));
+        setUsers(updatedUsers);
       }
     }
+
     setIsEditing((prev) => !prev);
   };
 
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
   };
-  // const renderNickname = () => {
-  //   if (isEditing) {
-  //     return <input type="text" value={nickname} onChange={handleNicknameChange} style={styles.userNickName} />;
-  //   } else {
-  //     // Check if users array is not empty
-  //     if (users.length > 0) {
-  //       // Display the nickname from the first entry of users array
-  //       return <h5 style={styles.userNickName}>{users[2].nickname}</h5>;
-  //     } else {
-  //       // If users array is empty or data hasn't loaded yet, display default value
-  //       return <h5 style={styles.userNickName}>Loading...</h5>;
-  //     }
-  //   }
-  // };
 
   const renderNickname = () => {
     if (isEditing) {

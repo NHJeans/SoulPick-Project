@@ -18,7 +18,8 @@ export const styles = {
     margin: '0 auto',
     width: 'fit-content',
     marginTop: '-80px',
-    width: '800px'
+    width: '800px',
+    borderBottom: '2px solid #7B7B7B'
   },
   textTop: {
     fontSize: '30px',

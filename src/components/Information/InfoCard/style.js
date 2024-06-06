@@ -2,13 +2,11 @@ export const styles = {
   container: {
     display: 'flex',
     alignItems: 'center',
-    padding: '20px',
-    border: '1px solid #ddd',
-    borderRadius: '15px',
-    backgroundColor: '#fff',
+    justifyContent: 'center',
+    borderBottom: '1px solid #7B7B7B',
     margin: '120px auto',
-    maxWidth: '400px',
-    width: '120%'
+    maxWidth: '800px',
+    width: '100%'
   },
   profilePicture: {
     width: '100px',
@@ -42,7 +40,7 @@ export const styles = {
     fontSize: '24px'
   },
   emailInput: {
-    margin: '2px 0 0',
+    margin: '2px 0 20px',
     fontSize: '18px',
     color: 'lightseagreen',
     fontWeight: 'bold'
@@ -56,43 +54,5 @@ export const styles = {
     borderRadius: '7px',
     marginTop: '-70px',
     marginLeft: '40px'
-  },
-
-  //  내가 쓴 글-------------------
-  borderOne: {
-    borderTop: '2px solid black',
-    margin: '0 0 20px'
-  },
-  borderTwo: {
-    borderTop: '2px solid black',
-    margin: '30px 0 0',
-    width: '800px',
-    display: 'block',
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },
-  centerStyle: {
-    display: 'flex',
-    textalign: 'center',
-    margin: '0 auto',
-    width: 'fit-content',
-    marginTop: '-80px',
-    width: '800px'
-  },
-  textTop: {
-    fontSize: '30px',
-    margin: ' 0 0 25px '
-  },
-
-  textSecond: {
-    fontSize: '25px',
-    margin: ' 0 0 10px '
-  },
-
-  imgStyle: {
-    height: '80px',
-    width: '80px',
-    float: 'right',
-    marginTop: '60px'
   }
 };
