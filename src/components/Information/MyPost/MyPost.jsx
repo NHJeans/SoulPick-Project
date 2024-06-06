@@ -16,6 +16,10 @@ const MyPost = () => {
   const [posts, setPosts] = useState([]);
   const [userId, setUserId] = useState(null);
 
+  const sortedData = [...posts].sort((latest, oldest) => {
+    return new Date(oldest.updated_at) - new Date(latest.updated_at);
+  });
+
   useEffect(() => {
     const fetchUserId = async () => {
       const {
@@ -53,10 +57,11 @@ const MyPost = () => {
     fetchData();
   }, [userId]);
 
+
   return (
     <PostContainer>
       <PostTitle>내가 쓴 글</PostTitle>
-      {posts.map((post) => (
+      {sortedData.map((post) => (
         <PostLink to={`/details/${post.id}`} key={post.id}>
           <ContentTextWrapper>
             <ContentText>{post.title}</ContentText>
