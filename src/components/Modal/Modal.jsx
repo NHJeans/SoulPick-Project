@@ -5,10 +5,10 @@ import {
   ModalContent,
   ModalContentWrapper,
   ModalForm,
-  ModalInput,
+  ModalInput, ModalSelectInputWrapper,
   ModalSubmitButton,
   ModalTextarea,
-  ModalTitle,
+  ModalTitle, ModalTopInputWrapper,
   ScreenDim
 } from "./style.js";
 import { useState } from 'react';
@@ -67,8 +67,14 @@ function ModalLayout({ closeModal }) {
             <ContentInner>
               <ModalTitle>my Pick!</ModalTitle>
               <ModalForm onSubmit={handleSubmit}>
-                <div style={{display: 'flex', flexDirection: 'row', gap: '10px', alignItems: 'center'}}>
-                  <div style={{display: 'flex', flexDirection: 'column', flexGrow: '1', gap: '20px'}}>
+                <ModalSelectInputWrapper>
+                  <ModalSelectBox
+                    name="category"
+                    value={formData.category}
+                    onChange={handleChange}
+                    error={errors.category}
+                  />
+                  <ModalTopInputWrapper>
                     <ModalInput
                       type="text"
                       placeholder="제목을 입력해주세요."
@@ -77,14 +83,8 @@ function ModalLayout({ closeModal }) {
                       onChange={handleChange}
                     />
                     {errors.title && <ErrorMessage>{errors.title}</ErrorMessage>}
-                  </div>
-                  <ModalSelectBox
-                    name="category"
-                    value={formData.category}
-                    onChange={handleChange}
-                    error={errors.category}
-                  />
-                </div>
+                  </ModalTopInputWrapper>
+                </ModalSelectInputWrapper>
                 <ModalInput
                   type="text"
                   placeholder="링크를 입력해주세요."
