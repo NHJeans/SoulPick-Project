@@ -51,7 +51,7 @@ export const CategoryCardBack = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1;
-  background-color: #5CADA8;
+  background-color: #A0D2CF;
   position: absolute;
   backface-visibility: hidden;
   border-radius: 50%;
