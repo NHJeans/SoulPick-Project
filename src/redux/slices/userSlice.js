@@ -17,11 +17,10 @@ const userSlice = createSlice({
       state.user = user;
     },
     updateUser: (state, action) => {
-      //업데이트
+      const updatedData = action.payload;
+      state.user = { ...state.user, ...updatedData };
     }
   }
 });
-
-export const { initUser } = userSlice.actions;
-
+export const { initUser, updateUser } = userSlice.actions;
 export default userSlice.reducer;

@@ -1,58 +1,108 @@
-export const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderBottom: '1px solid #7B7B7B',
-    margin: '120px auto',
-    maxWidth: '800px',
-    width: '100%'
-  },
-  profilePicture: {
-    width: '100px',
-    height: '100px',
-    borderRadius: '50%',
-    backgroundColor: 'lightgray',
-    marginRight: '20px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center'
-  },
-  infoContainer: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  name: {
-    margin: '0',
-    fontSize: '24px'
-  },
+import styled from 'styled-components';
 
-  userNickName: {
-    margin: '3px 0 0',
-    fontSize: '18px',
-    color: 'lightseagreen',
-    fontWeight: 'bold',
-    width: '150px'
-  },
-  email: {
-    margin: '10px 0 0',
-    fontSize: '24px'
-  },
-  emailInput: {
-    margin: '2px 0 20px',
-    fontSize: '18px',
-    color: 'lightseagreen',
-    fontWeight: 'bold'
-  },
-  editButton: {
-    padding: '8px 13px',
-    fontSize: '13px',
-    backgroundColor: '#A0D2CF',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '7px',
-    marginTop: '-70px',
-    marginLeft: '40px'
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 200px auto;
+  max-width: 800px;
+  width: 100%;
+  padding-bottom: 50px;  
+  border-bottom: 1px solid lightgray;  
+`;
+
+export const ProfilePicture = styled.div`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #eeeeee;
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
   }
-};
+`;
+export const Placeholder = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: darkgray;
+`;
+
+export const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Name = styled.h2`
+  margin: 0;
+  font-size: 16px;
+`;
+
+export const UserNickName = styled.h5`
+  margin: 3px 0 0;
+  font-size: 16px;
+  color: #5CADA8;
+  font-weight: bold;
+  width: 150px;
+`;
+
+export const Email = styled.p`
+  margin: 10px 0 0;
+  font-size: 16px;
+`;
+
+export const EmailInput = styled.p`
+  margin: 2px 0 20px;
+  font-size: 16px;
+  color: #5CADA8;
+  font-weight: bold;
+`;
+
+export const EditButton = styled.button`
+  padding: 8px 13px;
+  font-size: 13px;
+  background-color: #CCECEA;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  margin-top: -70px;
+  margin-left: 40px;
+  cursor: pointer;
+  &:hover {
+    background-color: #a0d2cf;
+  }
+`;
+
+export const AddButton = styled.button`
+  padding: 8px 13px;
+  font-size: 14px;
+  background-color: #CCECEA;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  margin: 20px 0 0 50px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #a0d2cf;
+  }
+`;
+export const StyledFileInput = styled.input`
+  display: none;
+`;
+
+export const Loading = styled.div`
+
+`;
