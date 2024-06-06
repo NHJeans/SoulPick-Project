@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CommentInput from '../../components/Comments/CommentInput/CommentInput';
 import CommentList from '../../components/Comments/CommentList/CommentList';
@@ -7,6 +8,10 @@ import { Center, DetailContainer } from './style';
 function DetailPage() {
   //postId
   const postId = useParams().detailId;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <DetailContainer>

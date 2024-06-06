@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchComments } from '../../../apis/comment';
 import { initComment } from '../../../redux/slices/commentSlice';
 import CommentItem from '../CommentItem';
-import { CommentLength, CommentListContainer, CommentTitle } from './style';
+import { CommentLength, CommentListContainer, CommentTitle, NoCommentsDiv } from './style';
 
 function CommentList({ postId }) {
   const dispatch = useDispatch();
@@ -30,7 +30,9 @@ function CommentList({ postId }) {
       </div>
 
       {!comments || comments.length === 0 ? (
-        <p>댓글이 없습니다.</p>
+        <NoCommentsDiv>
+          <p>댓글이 없습니다.</p>
+        </NoCommentsDiv>
       ) : (
         comments.map((comment) => {
           if (comment.id === undefined) return null;
