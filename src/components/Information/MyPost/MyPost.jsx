@@ -56,6 +56,7 @@ const MyPost = () => {
 
     fetchData();
   }, [userId]);
+  console.log('@@ posts', posts)
 
 
   return (
@@ -77,6 +78,7 @@ const MyPost = () => {
               <a href={post.link} target="_blank" rel="noopener noreferrer">
                 <img src={getYoutubeThumbnail(post.link)} alt="유튜브 썸네일" />
               </a>
+          </ContentImgWrapper>
           </ContentImgWrapper>
         </PostLink>
       ))}
