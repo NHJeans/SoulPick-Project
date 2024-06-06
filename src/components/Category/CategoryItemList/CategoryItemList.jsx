@@ -44,7 +44,10 @@ function CategoryItemList({onSelectCategory}){
             <CategoryCardFront>
               <img src={categoryThumbnails[index]} alt={`${category.name}`} />
             </CategoryCardFront>
-            <CategoryCardBack>{category.defaultTitle}</CategoryCardBack>
+            <CategoryCardBack>
+              <img src={categoryThumbnails[index]} alt={`${category.name} Back`} />
+              <div>{category.name}</div>
+            </CategoryCardBack>
           </CategoryItem>
           <CategoryItemName>{category.name}</CategoryItemName>
         </CategoryItemWrapper>

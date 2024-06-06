@@ -63,4 +63,34 @@ export const CategoryCardBack = styled.div`
   backface-visibility: hidden;
   border-radius: 50%;
   transform: rotateY(180deg);
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: rotateY(180deg);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 검정 투명도 */
+    border-radius: 50%;
+    z-index: 1;
+  }
+  div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+  }
+  
 `
