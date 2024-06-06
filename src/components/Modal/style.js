@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 export const Container = styled.div`
   position: fixed;
@@ -117,12 +117,17 @@ export const ScreenDim = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   cursor: zoom-out;
 `;
-// const ButtonModalClose = styled.div`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   padding: 12px;
-//   color: #fff;
-//   cursor: pointer;
-//   z-index: 100;
-// `;
+
+const shake = keyframes`
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-5px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(5px); }
+  100% { transform: translateY(0); }
+`;
+
+export const ErrorMessage = styled.p`
+  color: red;
+  font-size: 12px;
+  animation: ${shake} 0.2s linear 3;
+`;
