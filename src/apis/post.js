@@ -25,3 +25,11 @@ export const deleteSupabasePost = async (postId) => {
   const { error } = await supabase.from('Posts').delete().eq('id', postId);
   if (error) throw error;
 };
+
+
+//supabase post
+export const fetchSupabaseData = async () => {
+  const { data, error } = await supabase.from('Posts').select('*');
+  if (error) throw error;
+  return data;
+}

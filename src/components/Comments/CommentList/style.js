@@ -30,3 +30,15 @@ export const CommentLength = styled.div`
     color: #a0d2cf;
   }
 `;
+
+export const NoCommentsDiv = styled.div`
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    font-size: 18px;
+    color: #a0d2cf;
+  }
+`;

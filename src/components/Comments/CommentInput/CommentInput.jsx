@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { insertComment } from '../../../apis/comment';
 import { createComment } from '../../../redux/slices/commentSlice';
@@ -10,6 +11,7 @@ function CommentInput({ postId }) {
   const [content, setContent] = useState('');
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
+  const navigate = useNavigate();
 
   //댓글 등록 버튼 누를 시, state랑 supabase에 저장
   const handleCommentSubmit = (e) => {
@@ -28,11 +30,20 @@ function CommentInput({ postId }) {
     setContent('');
   };
 
+  //로그인 안한 이용자가 input 클릭 시
+  const handleGuestClick = () => {
+    if (user.id === '') {
+      const answer = confirm('로그인이 필요한 기능입니다.');
+      if (answer) navigate('/auth/signin');
+    }
+  };
+
   return (
     <CommentInputContainer>
       <div>{user.profile_img ? <img src={user.profile_img} /> : <Icon name={'profile'} />}</div>
       <form>
         <textarea
+          onClick={handleGuestClick}
           value={content}
           onChange={(e) => {
             setContent(e.target.value);
