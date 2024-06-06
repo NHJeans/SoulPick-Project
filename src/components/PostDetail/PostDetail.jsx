@@ -1,23 +1,56 @@
 import { useEffect, useState } from 'react';
-import supabase from '../../apis/supabaseClient';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { deleteSupabasePost, fetchPost, updateSupabasePost } from '../../apis/post';
 import Icon from '../Icon/Icon';
-import { CategoryContainer, ContentContainer, PostContainer, TitleContainer, Wrapper } from './style';
+import { CategoryContainer, ContentContainer, EditBox, PostContainer, TitleContainer, Wrapper } from './style';
 
 function PostDetail({ postId }) {
   const [post, setPost] = useState({});
-  const [nickname, setNickname] = useState('');
+  const [postNickname, setPostNickname] = useState('');
+  const [postProfile, setPostProfile] = useState('');
+  const [isEdit, setIsEdit] = useState(false);
+  const [updateContent, setUpdateContent] = useState('');
 
-  //supabase Post 데이터 불러오기
-  async function fetchPost() {
-    const { data, error } = await supabase.from('Posts').select(`*, Users(nickname)`).eq('id', postId);
-    if (error) throw error;
-    setPost(data[0]);
-    setNickname(data[0].Users.nickname);
-  }
+  const user = useSelector((state) => state.user.user);
+
+  const navigate = useNavigate();
+
+  const postTime = String(post.created_at);
+  const date = postTime.slice(0, 10).split('-').join('.');
 
   useEffect(() => {
-    fetchPost();
+    //supabase에서 post불러오기
+    (async () => {
+      const supaPost = await fetchPost(postId);
+      setPost(supaPost);
+      setPostNickname(supaPost.Users.nickname);
+      console.log(supaPost.Users);
+      setPostProfile(supaPost.Users.profile_img);
+      setUpdateContent(supaPost.content);
+    })();
   }, []);
+
+  //삭제 버튼 누를 시, alert
+  const handleDeletePostBtn = () => {
+    const answer = confirm('정말 게시글을 삭제하시겠습니까?');
+    if (answer) {
+      deleteSupabasePost(postId);
+      navigate('/');
+    }
+  };
+  //수정 버튼 누르면 수정할 수 있는 input이 뜸
+  const handleInsertPostBtn = () => {
+    setIsEdit(true);
+  };
+
+  //수정 등록 누르면 등록이 되게..
+  const handleUpdatePostBtn = () => {
+    if (!updateContent) return alert('게시글 내용이 빈칸일 수 없습니다.');
+    setIsEdit(false);
+    setPost({ ...post, content: updateContent });
+    updateSupabasePost(postId, updateContent);
+  };
 
   return (
     <Wrapper>
@@ -29,17 +62,36 @@ function PostDetail({ postId }) {
           <div className="left-div">
             <p className="title">{post.title}</p>
             <div className="content-info-div">
-              <div className="profile">
-                <Icon name={'profile'} />
-              </div>
-              <p>{nickname}</p>
-              <p>{post.created_at}</p>
+              {postProfile ? (
+                <img src={postProfile} />
+              ) : (
+                <div className="profile">
+                  <Icon name={'profile'} />
+                </div>
+              )}
+              <p>{postNickname}</p>
+              <p>{date}</p>
             </div>
           </div>
+          {post.user_id === user.id ? (
+            <div className="right-div">
+              <p onClick={handleInsertPostBtn}>수정</p>
+              <p onClick={handleDeletePostBtn}>삭제</p>
+            </div>
+          ) : (
+            false
+          )}
         </TitleContainer>
         <ContentContainer>
-          <div></div>
-          <p>{post.content}</p>
+          <div className="youtude"></div>
+          {isEdit ? (
+            <EditBox>
+              <textarea defaultValue={post.content} onChange={(e) => setUpdateContent(e.target.value)} />
+              <button onClick={handleUpdatePostBtn}>등록</button>
+            </EditBox>
+          ) : (
+            <p>{post.content}</p>
+          )}
         </ContentContainer>
       </PostContainer>
     </Wrapper>

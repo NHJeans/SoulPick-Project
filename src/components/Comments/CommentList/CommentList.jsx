@@ -1,29 +1,24 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import supabase from '../../../apis/supabaseClient';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchComments } from '../../../apis/comment';
+import { initComment } from '../../../redux/slices/commentSlice';
 import CommentItem from '../CommentItem';
 import { CommentLength, CommentListContainer, CommentTitle } from './style';
 
 function CommentList({ postId }) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+
   //redux comment state 읽어옴
-  const commentsReducer = useSelector((state) => state.comment.commentState);
-
-  const [comments, setComments] = useState([]);
-
-  //supabase에서 list 읽어옴
-  async function fetchComments() {
-    const { data, error } = await supabase.from('Comments').select('*,Users(nickname)').eq('post_id', postId);
-    if (error) throw error;
-    setComments(data);
-  }
+  const comments = useSelector((state) => state.comment.commentState);
 
   useEffect(() => {
-    fetchComments();
+    //supabase에서 comment list를 받아오기
+    (async () => {
+      const supabaseComments = await fetchComments(postId);
+      dispatch(initComment([...supabaseComments]));
+    })();
   }, []);
-
-  useEffect(() => {
-    setComments([...comments, commentsReducer]);
-  }, [commentsReducer]);
 
   return (
     <CommentListContainer>
@@ -39,7 +34,8 @@ function CommentList({ postId }) {
       ) : (
         comments.map((comment) => {
           if (comment.id === undefined) return null;
-          return <CommentItem key={comment.id} comment={comment} />; //key값?
+          const isMyComment = comment.user_id === user.id ? true : false;
+          return <CommentItem key={comment.id} comment={comment} isMyComment={isMyComment} />;
         })
       )}
     </CommentListContainer>

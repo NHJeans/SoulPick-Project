@@ -7,7 +7,14 @@ export const CategoryItemContainer = styled.ul`
   gap: 20px;
   width: 1200px;
 `
-export const CategoryItem = styled.li`
+export const CategoryItemWrapper = styled.li``;
+export const CategoryItemName = styled.div`
+  padding: 20px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+`
+export const CategoryItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

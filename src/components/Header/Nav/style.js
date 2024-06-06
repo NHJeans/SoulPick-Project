@@ -7,3 +7,10 @@ export const NavStyled = styled.nav`
   height: 100%;
   cursor: pointer;
 `;
+
+export const UserInfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+`;
