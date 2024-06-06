@@ -85,7 +85,6 @@ function ModalLayout({ closeModal }) {
                     error={errors.category}
                   />
                 </div>
-
                 <ModalInput
                   type="text"
                   placeholder="링크를 입력해주세요."

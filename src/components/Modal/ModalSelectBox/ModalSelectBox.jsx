@@ -1,9 +1,10 @@
 import {ErrorMessage} from "../style.js";
+import {ModalSelectBoxContainer} from "./style.js";
 
 function ModalSelectBox({ name, value, onChange, error }) {
   return (
     <div>
-      <ModalSelectBox
+      <ModalSelectBoxContainer
         name={name}
         value={value}
         onChange={onChange}
@@ -15,7 +16,7 @@ function ModalSelectBox({ name, value, onChange, error }) {
         <option value="발라드">발라드</option>
         <option value="록">록</option>
         <option value="기타">기타</option>
-      </ModalSelectBox>
+      </ModalSelectBoxContainer>
       {error && <ErrorMessage style={{marginTop: '20px'}}>{error}</ErrorMessage>}
     </div>
   );
