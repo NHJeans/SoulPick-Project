@@ -25,28 +25,26 @@ function ContentItem({item}){
   }, [item.id]);
 
   return (
-    <>
-      <Link style={{ textDecoration: "none"}} to={`/post/${item.id}`}>
-        <Container>
-          <ContentTextWrapper>
-            <ContentText>{item.title}</ContentText>
-            <ContentDescription>{item.content}</ContentDescription>
-          </ContentTextWrapper>
-          <CommentCount>
-            <IconComment name='comment'/>
-            {commentCount}
-          </CommentCount>
-          <ContentImgWrapper>
-            {thumbnail ? (
-              <img src={thumbnail} alt={`${item.title} thumbnail`} />
-            ) : (
-              <p>썸네일을 불러올 수 없습니다.</p>
-            )}
-          </ContentImgWrapper>
+    <Container>
+      <Link style={{ textDecoration: "none",display: 'flex'}} to={`/details/${item.id}`}>
+      <ContentTextWrapper>
+          <ContentText>{item.title}</ContentText>
+          <ContentDescription>{item.content}</ContentDescription>
+        <CommentCount>
+          <IconComment name='comment'/>
+          {commentCount}
+        </CommentCount>
+      </ContentTextWrapper>
+        <ContentImgWrapper>
+          {thumbnail ? (
+            <img src={thumbnail} alt={`${item.title} thumbnail`} />
+          ) : (
+            <p>썸네일을 불러올 수 없습니다.</p>
+          )}
+        </ContentImgWrapper>
+     </Link>
+    </Container>
 
-        </Container>
-      </Link>
-    </>
 
 
 )
