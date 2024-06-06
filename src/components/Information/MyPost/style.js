@@ -1,5 +1,6 @@
 export const styles = {
   //  내가 쓴 글-------------------
+
   borderOne: {
     borderTop: '2px solid black',
     margin: '0 0 20px'
@@ -19,7 +20,8 @@ export const styles = {
     width: 'fit-content',
     marginTop: '-80px',
     width: '800px',
-    borderBottom: '2px solid #7B7B7B'
+    borderBottom: '2px solid #7B7B7B',
+    flexDirection: 'column'
   },
   textTop: {
     fontSize: '30px',
@@ -34,7 +36,20 @@ export const styles = {
   imgStyle: {
     height: '80px',
     width: '80px',
-    float: 'right',
-    marginTop: '60px'
+    float: 'right'
+  },
+  margin: {
+    marginLeft: '20px',
+    marginRight: '20px',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  box: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  box1: {
+    marginBottom: '25px'
   }
 };
