@@ -5,23 +5,13 @@ import {
   ContentImgWrapper,
   ContentText,
   ContentTextWrapper
-<<<<<<< HEAD:src/components/Contents/components/ContentItem/ContentItem.jsx
 } from './style.js';
-import { getYoutubeThumbnail } from '../../../../utils/youTube.js';
+import { getYoutubeThumbnail } from '../../../utils/youTube.js';
 import { Link } from 'react-router-dom';
-import { IconComment } from '../../../Icon/components/Icons/IconComment.jsx';
+import { IconComment } from '../../Icon/components/Icons/IconComment.jsx';
 import { useEffect, useState } from 'react';
-import { getCommentCount } from '../../../../utils/comment.js';
+import { getCommentCount } from '../../../utils/comment.js';
 function ContentItem({ item }) {
-=======
-} from "./style.js";
-import {getYoutubeThumbnail} from "../../../utils/youTube.js";
-import {Link} from "react-router-dom";
-import {IconComment} from "../../Icon/components/Icons/IconComment.jsx";
-import {useEffect, useState} from "react";
-import {getCommentCount} from "../../../utils/comment.js";
-function ContentItem({item}){
->>>>>>> fd91b2f96dededdac53f61582ecf5bc75c552aff:src/components/Contents/ContentItem/ContentItem.jsx
   const [commentCount, setCommentCount] = useState(0);
   const thumbnail = getYoutubeThumbnail(item.link);
 
