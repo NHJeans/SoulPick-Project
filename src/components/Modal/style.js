@@ -59,6 +59,19 @@ export const ModalForm = styled.form`
   color: #a9a9a9;
 `;
 
+export const ModalSelectInputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+`;
+
+export const ModalTopInputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 20px;
+`;
+
 export const ModalInput = styled.input`
   width: 100%;
   padding: 16px;
