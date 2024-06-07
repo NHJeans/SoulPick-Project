@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { getCommentCount } from '../../../utils/comment.js';
 import { getYoutubeThumbnail } from '../../../utils/youTube.js';
 import { IconComment } from '../../Icon/components/Icons/IconComment.jsx';
@@ -7,7 +6,8 @@ import {
   CommentCount,
   Container,
   ContentDescription,
-  ContentImgWrapper, ContentLink,
+  ContentImgWrapper,
+  ContentLink,
   ContentText,
   ContentTextWrapper
 } from './style.js';
