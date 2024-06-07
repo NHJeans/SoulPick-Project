@@ -1,4 +1,4 @@
-# naebaecam-project 빡빡이조(B-12조)
+# naebaecam-NewsFeedProject 빡빡이조(B-12조)
 
 ## 🗂️ 프로젝트 소개
 
@@ -9,7 +9,11 @@
 
 2024.05.31 ~ 2024.06.06
 
-## 🔖 링크
+## 🖥️ 와이어프레임
+
+https://www.figma.com/design/BDyX1eQFUf6EKGuwtWNTcU/%EB%94%94%EC%9E%90%EC%9D%B8?node-id=0-1&t=o0WkcjHBhyceH77v-0
+
+## 🔖 사이트 링크
 
 <a href="https://soul-pick-project.vercel.app/
 ">https://soul-pick-project.vercel.app/</a>
@@ -39,11 +43,7 @@
 
 ## ⚙️ 기술 스택
 
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"> 
-<img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
-<img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white">
-<img src="https://img.shields.io/badge/supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white">
-<br>
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"><img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"><img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"><img src="https://img.shields.io/badge/supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white">
 <br>
 
 ## 📌 기능
@@ -60,3 +60,10 @@
   - 게시물 작성 모달을 통한 음악 장르의 선택과, 제목, 추천사유 및 유튜브 링크를 기재하여, 게시글 썸네일 및 디테일 페이지에서의 영상 시청 기능 구현.
   - 게시글 상세페이지의 댓글 기능 구현.
   - 내가 쓴 게시물 및 댓글에 대한 수정과 삭제 기능.
+
+## 🛠️ 개발 환경
+
+- 프론트엔드: React, Styled-Components, Redux
+- 백엔드: Supabase
+- 버전 관리: GitHub
+- 배포: Vercel
