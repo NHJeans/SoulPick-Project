@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthError, login } from '../../../apis/auth';
-import { InputWrapper, Container, Title, StyledLink, Label, Input, ErrorMessage, Button } from './style';
+import { Button, Container, ErrorMessage, Input, InputWrapper, Label, StyledLink, Title } from './style';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -13,7 +13,6 @@ const Login = () => {
     e.preventDefault();
     try {
       const result = await login({ email, password });
-      //todo 토큰정보 보기용
       console.log('로그인 성공!', result);
       navigate('/');
     } catch (error) {

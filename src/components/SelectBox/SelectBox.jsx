@@ -28,7 +28,6 @@ function SelectBox({ onClose, user }) {
     }
   };
 
-  console.log(user);
   const options = user.id !== '' ? OPTIONS_LOGGED_IN : OPTIONS_LOGGED_OUT;
 
   return (

@@ -30,7 +30,6 @@ function PostDetail({ postId }) {
       const supaPost = await fetchPost(postId);
       setPost(supaPost);
       setPostNickname(supaPost.Users.nickname);
-      console.log(supaPost.Users);
       setPostProfile(supaPost.Users.profile_img);
       setUpdateContent(supaPost.content);
     })();

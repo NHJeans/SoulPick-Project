@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthError, signUp } from '../../../apis/auth';
 import {
-  InputWrapper,
+  Button,
   Container,
-  StyledLink,
-  Title,
-  Label,
-  Input,
   ErrorMessage,
+  Input,
+  InputWrapper,
+  Label,
+  StyledLink,
   SuccessMessage,
-  Button
+  Title
 } from './style';
 
 const Join = () => {
@@ -31,7 +31,6 @@ const Join = () => {
     try {
       const result = await signUp({ email, password });
       if (result) {
-        console.log('회원가입 성공!');
         setSuccessMessage('회원가입이 완료되었습니다. 이메일을 확인해주세요.');
         setTimeout(() => {
           navigate('/auth/signin');

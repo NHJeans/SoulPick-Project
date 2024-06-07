@@ -1,12 +1,10 @@
+import { generateRandomNickname } from '../utils/generateRandomNickname';
 import supabase from './supabaseClient';
-import { generateRandomNickname } from '../utils/generateRandomNickname'
-
-
 
 export class AuthError extends Error {
   constructor(message) {
     super(message);
-    this.name = "AuthError"; // 에러 이름 설정
+    this.name = 'AuthError'; // 에러 이름 설정
   }
 }
 
@@ -14,24 +12,20 @@ export class AuthError extends Error {
 export const login = async ({ email, password }) => {
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
-    password,
+    password
   });
   if (error) {
     if (error.message === 'Email not confirmed') {
-      throw new AuthError("이메일을 인증을 완료하지 않았습니다.");
+      throw new AuthError('이메일을 인증을 완료하지 않았습니다.');
     }
-    throw new AuthError("로그인 정보가 잘못되었습니다.");
+    throw new AuthError('로그인 정보가 잘못되었습니다.');
   }
   return data;
 };
 
 // 사용자 정보 확인
 export const checkUserExists = async (userId) => {
-  const { data, error } = await supabase
-    .from('Users')
-    .select('id')
-    .eq('id', userId)
-    .single();
+  const { data, error } = await supabase.from('Users').select('id').eq('id', userId).single();
 
   if (error && error.code !== 'PGRST116') {
     throw new AuthError('사용자 정보를 확인하는 데 실패했습니다');
@@ -47,7 +41,7 @@ export const insertUser = async (userId, nickname, email, provider, profileImg) 
     nickname: nickname || generateRandomNickname(),
     email,
     provider,
-    profile_img: profileImg || '',
+    profile_img: profileImg || ''
   });
 
   if (error) {
@@ -59,7 +53,7 @@ export const insertUser = async (userId, nickname, email, provider, profileImg) 
 export const signUp = async ({ email, password }) => {
   const { data, error } = await supabase.auth.signUp({ email, password });
   if (error) {
-    throw new AuthError("이미 존재하는 이메일 입니다.");
+    throw new AuthError('이미 존재하는 이메일 입니다.');
   }
   const userId = data.user.id;
   const existingUser = await checkUserExists(userId);
@@ -75,7 +69,7 @@ export const signUp = async ({ email, password }) => {
 const oauthLogin = async (provider, options) => {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
-    options,
+    options
   });
 
   if (error) {
@@ -90,18 +84,17 @@ const oauthLogin = async (provider, options) => {
 
 // 구글 로그인 및 회원가입
 export const googleLogin = async () => {
-  await oauthLogin("google", { redirectTo: import.meta.env.VITE_OAUTH_REDIRECT_URL });
-  console.log(import.meta.env.VITE_OAUTH_REDIRECT_URL)
+  await oauthLogin('google', { redirectTo: import.meta.env.VITE_OAUTH_REDIRECT_URL });
 };
 
 // 깃헙 로그인 및 회원가입
 export const githubLogin = async () => {
-  await oauthLogin("github", { redirectTo: import.meta.env.VITE_OAUTH_REDIRECT_URL });
+  await oauthLogin('github', { redirectTo: import.meta.env.VITE_OAUTH_REDIRECT_URL });
 };
 
 // 카카오 로그인 및 회원가입
 export const kakaoLogin = async () => {
-  await oauthLogin("kakao", { redirectTo: import.meta.env.VITE_OAUTH_REDIRECT_URL });
+  await oauthLogin('kakao', { redirectTo: import.meta.env.VITE_OAUTH_REDIRECT_URL });
 };
 
 // 사용자 정보 추출
@@ -137,7 +130,7 @@ export const updateUserAfterOAuth = async () => {
   const user = sessionData.session.user;
 
   if (!user) {
-    throw new Error("사용자 정보가 없습니다.");
+    throw new Error('사용자 정보가 없습니다.');
   }
 
   const userId = user.id;
@@ -149,11 +142,10 @@ export const updateUserAfterOAuth = async () => {
   }
 };
 
-//Todo 미구현
 // 로그아웃 기능
 export const logout = async () => {
   const { error } = await supabase.auth.signOut();
   if (error) {
-    throw new AuthError("로그아웃에 실패하였습니다.");
+    throw new AuthError('로그아웃에 실패하였습니다.');
   }
 };
