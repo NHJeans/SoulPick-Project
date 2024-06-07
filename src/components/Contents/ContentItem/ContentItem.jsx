@@ -6,7 +6,8 @@ import {
   CommentCount,
   Container,
   ContentDescription,
-  ContentImgWrapper, ContentLink,
+  ContentImgWrapper,
+  ContentLink,
   ContentText,
   ContentTextWrapper
 } from './style.js';
