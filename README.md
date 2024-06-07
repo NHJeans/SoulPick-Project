@@ -11,21 +11,21 @@
 ## 🔖 링크
 
 <a href="https://soul-pick-project.vercel.app/
-">https://js-basic-1013s-projects.vercel.app/</a>
+">https://soul-pick-project.vercel.app/</a>
 
 ### 😎 Members
 
 <table>
    <tr>
-    <td align="center"><b></b></td>
-    <td align="center"><b></b></td>
-    <td align="center"><b></b></td>
-    <td align="center"><b></b></td>
+    <td align="center"><b>박초원</b></td>
+    <td align="center"><b>김소라</b></td>
+    <td align="center"><b>이세영</b></td>
+    <td align="center"><b>남현재</b></td>
   </tr>
   <tr>
-    <td align="center"><a href=""><img src="" width="100px" /></a></td>
-    <td align="center"><a href=""><img src="https://avatars.githubusercontent.com/u/166623471?v=4" width="100px" /></a></td>
-    <td align="center"><a href=""><img src="https://avatars.githubusercontent.com/u/75258514?v=4" width="100px" /></a></td>
+    <td align="center"><a href=""><img src="https://avatars.githubusercontent.com/u/70216263?v=4" width="100px" /></a></td>
+    <td align="center"><a href=""><img src="https://avatars.githubusercontent.com/u/69830157?v=4" width="100px" /></a></td>
+    <td align="center"><a href=""><img src="https://avatars.githubusercontent.com/u/141402621?v=4" width="100px" /></a></td>
     <td align="center"><a href=""><img src="https://avatars.githubusercontent.com/u/110883544?v=4" width="100px" /></a></td>
   </tr>
   <tr>
@@ -38,6 +38,9 @@
 
 ## 기술 스택
 
-<!-- <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"> 
+<img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
+<img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white">
+<img src="https://img.shields.io/badge/supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white">
 <br>
-<br> -->
+<br>
