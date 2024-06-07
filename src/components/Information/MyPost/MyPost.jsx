@@ -77,6 +77,7 @@ const MyPost = () => {
                 <img src={getYoutubeThumbnail(post.link)} alt="유튜브 썸네일" />
               </a>
           </ContentImgWrapper>
+          </ContentImgWrapper>
         </PostLink>
       ))}
     </PostContainer>
