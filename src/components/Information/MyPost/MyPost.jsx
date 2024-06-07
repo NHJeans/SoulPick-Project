@@ -56,8 +56,7 @@ const MyPost = () => {
 
     fetchData();
   }, [userId]);
-
-
+  
   return (
     <PostContainer>
       <PostTitle>내가 쓴 글</PostTitle>
